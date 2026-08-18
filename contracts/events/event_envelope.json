@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "3.0.0",
+  "delivery": "AT_LEAST_ONCE",
+  "exactly_once_assumed": false,
+  "required_fields": [
+    "event_id",
+    "event_type",
+    "event_version",
+    "schema_version",
+    "occurred_at",
+    "produced_at",
+    "producer",
+    "correlation_id",
+    "payload",
+    "payload_sha256"
+  ],
+  "optional_fields": [
+    "causation_id",
+    "decision_id",
+    "lineage_id",
+    "scope_hash"
+  ]
+}
+

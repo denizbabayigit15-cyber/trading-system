@@ -1,0 +1,50 @@
+name: trading-system
+
+services:
+  postgres:
+    image: postgres:18.6-bookworm
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Run scripts/generate_local_env.py first}
+      POSTGRES_USER: ${POSTGRES_USER:?Run scripts/generate_local_env.py first}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run scripts/generate_local_env.py first}
+      POSTGRES_INITDB_ARGS: "--data-checksums --auth-host=scram-sha-256"
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      # PostgreSQL 18+ official images persist the major-version layout here.
+      - postgres_data:/var/lib/postgresql
+    shm_size: 256mb
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+    networks:
+      - trading_internal
+
+  pgadmin:
+    image: dpage/pgadmin4:9.17
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:?Run scripts/generate_local_env.py first}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:?Run scripts/generate_local_env.py first}
+    ports:
+      - "127.0.0.1:${PGADMIN_PORT:-5050}:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - trading_internal
+
+networks:
+  trading_internal:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+

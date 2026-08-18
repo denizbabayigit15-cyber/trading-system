@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/manifest.schema.json",
+  "title": "Trading System Package Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "contract_version",
+    "package_version",
+    "implementation_wave",
+    "r1_code_ready",
+    "live_authorized",
+    "engine_count_expected",
+    "question_count_expected"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "contract_version": {"const": "3.0.0"},
+    "package_version": {"type": "string"},
+    "implementation_wave": {"const": "W0"},
+    "r1_code_ready": {"const": false},
+    "r2_test_ready": {"const": false},
+    "r3_operationally_live_ready": {"const": false},
+    "r4_profitability_certified": {"const": false},
+    "live_authorized": {"const": false},
+    "engine_count_expected": {"const": 112},
+    "question_count_expected": {"const": 900},
+    "blockers": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
+

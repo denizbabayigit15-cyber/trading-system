@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "3.0.0",
+  "initial_state": "BOOT",
+  "transitions": {
+    "BOOT": ["SELF_CHECK", "HALTED"],
+    "SELF_CHECK": ["READY", "DEGRADED", "SAFE_MODE", "HALTED"],
+    "READY": ["MONITORING", "DEGRADED", "SAFE_MODE", "HALTED"],
+    "MONITORING": ["DEGRADED", "SAFE_MODE", "HALTED"],
+    "TRADING_ENABLED": ["DEGRADED", "SAFE_MODE", "HALTED", "RECONCILIATION_REQUIRED"],
+    "DEGRADED": ["SAFE_MODE", "HALTED", "RECOVERING"],
+    "SAFE_MODE": ["HALTED", "RECOVERING", "RECONCILIATION_REQUIRED"],
+    "RECONCILIATION_REQUIRED": ["RECONCILING", "HALTED"],
+    "RECOVERING": ["RECONCILING", "SAFE_MODE", "HALTED"],
+    "RECONCILING": ["READY", "SAFE_MODE", "HALTED"],
+    "HALTED": ["RECOVERING"]
+  },
+  "scaffold_prohibited_transitions": [
+    "READY->TRADING_ENABLED",
+    "MONITORING->TRADING_ENABLED"
+  ]
+}
+

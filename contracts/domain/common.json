@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "3.0.0",
+  "required_trace_fields": [
+    "id",
+    "schema_version",
+    "created_at",
+    "effective_time",
+    "source_version",
+    "code_version",
+    "status"
+  ],
+  "decision_trace_fields": [
+    "decision_id",
+    "data_version",
+    "model_version",
+    "policy_version",
+    "execution_version"
+  ],
+  "financial_number": {
+    "canonical_python_type": "decimal.Decimal",
+    "float_allowed": false,
+    "rounding": "ROUND_HALF_EVEN",
+    "serialization": "fixed-point decimal string"
+  }
+}
+

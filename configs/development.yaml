@@ -1,0 +1,17 @@
+schema_version: "1.0.0"
+environment: development
+contract_version: "3.0.0"
+live_trading_enabled: false
+external_values:
+  broker: UNBOUND_REQUIRED
+  venue: UNBOUND_REQUIRED
+  account: UNBOUND_REQUIRED
+  capital: UNBOUND_REQUIRED
+  fees: UNBOUND_REQUIRED
+  legal_scope: UNBOUND_REQUIRED
+failure_policy:
+  unknown_critical_state: DENY_NEW_RISK
+  stale_critical_state: DENY_NEW_RISK
+  missing_critical_state: DENY_NEW_RISK
+  reconciliation_mismatch: RECONCILIATION_REQUIRED
+

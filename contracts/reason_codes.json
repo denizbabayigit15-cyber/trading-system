@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "3.0.0",
+  "codes": [
+    {
+      "code": "AUTH_LIVE_DISABLED",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "AUTH_UNBOUND_EXTERNAL",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "AUTH_UNKNOWN_CRITICAL_STATE",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "AUTH_STALE_CRITICAL_STATE",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "AUTH_MISSING_CRITICAL_STATE",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "RECONCILIATION_REQUIRED",
+      "category": "RECONCILIATION",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "ENTER_RECONCILIATION_REQUIRED"
+    },
+    {
+      "code": "CONTRACT_ARTIFACT_MISSING",
+      "category": "CONTRACT",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "BLOCK_GATE"
+    },
+    {
+      "code": "CONTRACT_VALIDATION_FAILED",
+      "category": "CONTRACT",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "BLOCK_GATE"
+    },
+    {
+      "code": "DATABASE_UNAVAILABLE",
+      "category": "OPERATIONS",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "ENTER_SAFE_MODE"
+    },
+    {
+      "code": "TEMPORAL_INVALID",
+      "category": "TEMPORAL_TRUTH",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "SECURITY_INTEGRITY_UNKNOWN",
+      "category": "SECURITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    }
+  ]
+}
+

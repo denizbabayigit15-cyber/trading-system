@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "3.0.0",
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": "docs/baseline/CODING_HANDOFF_INSTRUCTIONS_V3_0_0.md",
+      "size_bytes": 2464,
+      "sha256": "2926e8412f2d3592f9cbe6ce77b8c0189469ecd72a54c518949d612a2a135d60"
+    },
+    {
+      "path": "docs/baseline/DEVELOPER_CONSTITUTION_V2_0_TRADING_SYSTEM_PRECODE_HARDENED.md",
+      "size_bytes": 24333,
+      "sha256": "69b30f90771ad6e7bfbb49d07e0ff42f1c08daf1472625c3b1451a0bd528a276"
+    },
+    {
+      "path": "docs/baseline/ENGINE_CATALOG_112_V3_0_0.md",
+      "size_bytes": 25404,
+      "sha256": "e4b32fd171da2371e304043d4b0b6de272d998fd72da887cfd46119e4d1e61c8"
+    },
+    {
+      "path": "docs/baseline/IMPLEMENTATION_READINESS_MATRIX_V3_0_0.md",
+      "size_bytes": 2743,
+      "sha256": "3babace366df694ea8484155807bed1079e532d79e3a09e51467a4fbc35e372c"
+    },
+    {
+      "path": "docs/baseline/SISTEM_DURUM_KARNESI_V3_0_0_TR.md",
+      "size_bytes": 1293,
+      "sha256": "c6f32893a04f9fcbb5c0449380a7a5fe947294335c33a1139e8a05d5e6ec0c3a"
+    },
+    {
+      "path": "docs/baseline/STRATEGY_RESEARCH_CANDIDATE_CATALOG_V3_0_0.md",
+      "size_bytes": 29466,
+      "sha256": "e0a286206c7b81dd77ed597ec5aae90be1c378666825888abf903ff3ed363b9e"
+    },
+    {
+      "path": "docs/baseline/TRADING_SYSTEM_MASTER_IMPLEMENTATION_CONTRACT_V3_0_0_PRECODE_HARDENED.md",
+      "size_bytes": 378409,
+      "sha256": "201cfafd068449d9a4525076d083082d27065cd34948a10b54ef093e8b3a11c3"
+    },
+    {
+      "path": "docs/baseline/TRADING_SYSTEM_V3_0_0_PRECODE_QUESTION_BANK_ADOPTION_CANDIDATE.md",
+      "size_bytes": 107862,
+      "sha256": "87fdc3e6de9a9e5b76fe470faa310ed57a9392cf7d5ecfd3f672149bc35a5544"
+    },
+    {
+      "path": "contracts/domain/common.json",
+      "size_bytes": 555,
+      "sha256": "996df3037bf2ae0e03cd2f9c0f7bff1c0cfd9a3c5845b7188f416758aafeb242"
+    },
+    {
+      "path": "contracts/engine_registry.json",
+      "size_bytes": 29040,
+      "sha256": "7eebc68493a9262fc4d8f6e139abac2ae993ba52868d913aae121aedce5f165a"
+    },
+    {
+      "path": "contracts/enums/runtime_status.json",
+      "size_bytes": 333,
+      "sha256": "ab19b166ae0dc0e203fa7c556d37b5366b38326943886d4a193292327df07191"
+    },
+    {
+      "path": "contracts/events/event_envelope.json",
+      "size_bytes": 447,
+      "sha256": "0c5e74cd9d1f8faa0633f9220bb56976cb73c237bd7935e5f00a2cae6291e340"
+    },
+    {
+      "path": "contracts/manifest.json",
+      "size_bytes": 904,
+      "sha256": "ee568b464dca1298a5409f077ba309b68a5243cbe12e3712cb003a1bc0cbb686"
+    },
+    {
+      "path": "contracts/policies/fail_closed.json",
+      "size_bytes": 708,
+      "sha256": "2d78325e4d47b2a9b3bfbbe23b2998a1152db7a2ffb0ea9f040ed987ef1df097"
+    },
+    {
+      "path": "contracts/reason_codes.json",
+      "size_bytes": 1928,
+      "sha256": "20567a9520f8034e24df35470dacc1cb392f4c2151ddba9532e7e7f16d0283f7"
+    },
+    {
+      "path": "contracts/state/runtime_state_machine.json",
+      "size_bytes": 854,
+      "sha256": "17d3e79128b6757226b31575a452bf2f731d590b1f6af487770304667ba3877c"
+    },
+    {
+      "path": "schemas/engine_registry.schema.json",
+      "size_bytes": 1183,
+      "sha256": "1d232fe65e7ada1cac29597d1bb366746c9a0052c5447b6c9510d7d643187198"
+    },
+    {
+      "path": "schemas/event_envelope.schema.json",
+      "size_bytes": 1317,
+      "sha256": "df01a3dfcb9a10eb35019d7c1478a9c8832c56e69fa40145825e1f900cd5fc76"
+    },
+    {
+      "path": "schemas/manifest.schema.json",
+      "size_bytes": 1084,
+      "sha256": "8cadeeb9bf2a94540000d5e9c0a2d3048c3db9857fd242135b28ea53b86bb85f"
+    }
+  ]
+}

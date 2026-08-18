@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/engine_registry.schema.json",
+  "title": "Trading System Engine Registry",
+  "type": "object",
+  "required": ["schema_version", "contract_version", "expected_count", "engines"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "contract_version": {"const": "3.0.0"},
+    "expected_count": {"const": 112},
+    "engines": {
+      "type": "array",
+      "minItems": 112,
+      "maxItems": 112,
+      "items": {
+        "type": "object",
+        "required": ["engine_id", "engine_name", "orchestrator", "source", "primary_output", "runtime_status"],
+        "properties": {
+          "engine_id": {"type": "integer", "minimum": 1, "maximum": 112},
+          "engine_name": {"type": "string", "minLength": 1},
+          "orchestrator": {"type": "string", "minLength": 1},
+          "source": {"enum": ["V2.2.5_RETAINED", "V3.0.0_ADDED"]},
+          "primary_output": {"type": "string", "minLength": 1},
+          "runtime_status": {"const": "NOT_IMPLEMENTED"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

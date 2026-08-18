@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "3.0.0",
+  "policy_id": "POLICY-FAIL-CLOSED-V1",
+  "rules": [
+    {"condition": "critical_data_missing", "action": "DENY_NEW_RISK"},
+    {"condition": "critical_data_stale", "action": "DENY_NEW_RISK"},
+    {"condition": "critical_state_unknown", "action": "DENY_NEW_RISK"},
+    {"condition": "position_mismatch", "action": "RECONCILIATION_REQUIRED"},
+    {"condition": "order_state_unknown", "action": "RECONCILIATION_REQUIRED"},
+    {"condition": "security_integrity_unknown", "action": "DENY_NEW_RISK"},
+    {"condition": "external_value_unbound", "action": "DENY_NEW_RISK"},
+    {"condition": "live_authorized_false", "action": "DENY_NEW_RISK"}
+  ]
+}
+

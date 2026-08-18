@@ -1,0 +1,903 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "3.0.0",
+  "expected_count": 112,
+  "engines": [
+    {
+      "engine_id": 1,
+      "engine_name": "SYSTEM GOVERNANCE ENGINE",
+      "orchestrator": "GovernanceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "governance event / audit record",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 2,
+      "engine_name": "POLICY & LIMITS ENGINE",
+      "orchestrator": "GovernanceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "governance event / audit record",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 3,
+      "engine_name": "DATA SOURCE REGISTRY",
+      "orchestrator": "DataFoundationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "SourceRegistered/SourceHealth",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 4,
+      "engine_name": "DATA INGESTION ENGINE",
+      "orchestrator": "DataFoundationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RawObservation",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 5,
+      "engine_name": "DATA QUALITY ENGINE",
+      "orchestrator": "DataFoundationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "QualityResult",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 6,
+      "engine_name": "TEMPORAL TRUTH ENGINE",
+      "orchestrator": "DataFoundationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "TemporalSnapshot",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 7,
+      "engine_name": "DATA LINEAGE ENGINE",
+      "orchestrator": "DataFoundationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "LineageRecord",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 8,
+      "engine_name": "CONTRACT / INSTRUMENT MASTER ENGINE",
+      "orchestrator": "MarketProfileOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "InstrumentMasterRecord",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 9,
+      "engine_name": "HISTORICAL DATA LAKE",
+      "orchestrator": "DataFoundationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "DatasetVersion",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 10,
+      "engine_name": "FEATURE FABRIC",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 11,
+      "engine_name": "VOLUME / PROFILE ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 12,
+      "engine_name": "ORDER FLOW ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 13,
+      "engine_name": "MICROSTRUCTURE ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 14,
+      "engine_name": "LIQUIDITY BEHAVIOR ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 15,
+      "engine_name": "LIQUIDITY CAPACITY ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 16,
+      "engine_name": "OPTIONS ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 17,
+      "engine_name": "GREEKS / GEX ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 18,
+      "engine_name": "FUTURES / OI ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 19,
+      "engine_name": "BTC DERIVATIVES ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 20,
+      "engine_name": "VOLATILITY ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 21,
+      "engine_name": "MACRO ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 22,
+      "engine_name": "NEWS / EVENT ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 23,
+      "engine_name": "CROSS-ASSET ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 24,
+      "engine_name": "POSITIONING / COT ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 25,
+      "engine_name": "SESSION ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "Feature/DomainState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 26,
+      "engine_name": "MARKET STATE ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "MarketState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 27,
+      "engine_name": "REGIME ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RegimeState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 28,
+      "engine_name": "CONTEXT ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ContextState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 29,
+      "engine_name": "LIQUIDITY MAP ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "LiquidityMap",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 30,
+      "engine_name": "SETUP DETECTION ENGINE",
+      "orchestrator": "DecisionResearchOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "SetupQuality/Conflict/Dependency",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 31,
+      "engine_name": "SETUP QUALITY ENGINE",
+      "orchestrator": "DecisionResearchOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "SetupQuality/Conflict/Dependency",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 32,
+      "engine_name": "CONFLICT ENGINE",
+      "orchestrator": "DecisionResearchOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "SetupQuality/Conflict/Dependency",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 33,
+      "engine_name": "ALPHA ENGINE",
+      "orchestrator": "DecisionResearchOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "AlphaAssessment",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 34,
+      "engine_name": "ALPHA DEPENDENCY ENGINE",
+      "orchestrator": "DecisionResearchOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "SetupQuality/Conflict/Dependency",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 35,
+      "engine_name": "STRATEGY LIBRARY",
+      "orchestrator": "GovernanceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "StrategyDefinition",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 36,
+      "engine_name": "STRATEGY ELIGIBILITY ENGINE",
+      "orchestrator": "DecisionResearchOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "StrategyEligibility",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 37,
+      "engine_name": "EXPECTANCY ENGINE",
+      "orchestrator": "DecisionResearchOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ExpectancyAssessment",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 38,
+      "engine_name": "PROBABILITY CALIBRATION ENGINE",
+      "orchestrator": "ResearchValidationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ProbabilityAssessment",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 39,
+      "engine_name": "EDGE QUALITY ENGINE",
+      "orchestrator": "DecisionResearchOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "EdgeAssessment",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 40,
+      "engine_name": "NO-TRADE ENGINE",
+      "orchestrator": "DecisionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "TradeAdmissionVeto",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 41,
+      "engine_name": "SIGNAL AUTHORIZATION ENGINE",
+      "orchestrator": "DecisionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "SignalAuthorization",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 42,
+      "engine_name": "TRADE THESIS ENGINE",
+      "orchestrator": "DecisionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "TradeThesis",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 43,
+      "engine_name": "RISK ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RiskDecision/RiskState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 44,
+      "engine_name": "RISK BUDGET HIERARCHY ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RiskDecision/RiskState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 45,
+      "engine_name": "DRAWDOWN RESPONSE ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RiskDecision/RiskState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 46,
+      "engine_name": "LOSS DISTRIBUTION ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RiskDecision/RiskState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 47,
+      "engine_name": "RISK OF RUIN ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RiskDecision/RiskState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 48,
+      "engine_name": "TAIL RISK ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RiskDecision/RiskState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 49,
+      "engine_name": "STRESS SCENARIO ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RiskDecision/RiskState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 50,
+      "engine_name": "MARGIN ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RiskDecision/RiskState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 51,
+      "engine_name": "PORTFOLIO RISK ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RiskDecision/RiskState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 52,
+      "engine_name": "CAPITAL ALLOCATION ENGINE",
+      "orchestrator": "CapitalOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "CapitalDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 53,
+      "engine_name": "CAPITAL COMPETITION ENGINE",
+      "orchestrator": "CapitalOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "CapitalDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 54,
+      "engine_name": "PORTFOLIO OPTIMIZATION ENGINE",
+      "orchestrator": "CapitalOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "CapitalDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 55,
+      "engine_name": "EXECUTION APPROVAL ENGINE",
+      "orchestrator": "ExecutionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ExecutionAuthorization",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 56,
+      "engine_name": "EXECUTION ENGINE",
+      "orchestrator": "ExecutionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "VenueCommand/Fills",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 57,
+      "engine_name": "TRANSACTION COST ENGINE",
+      "orchestrator": "ExecutionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "CostEstimate",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 58,
+      "engine_name": "MARKET IMPACT ENGINE",
+      "orchestrator": "ExecutionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ImpactEstimate",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 59,
+      "engine_name": "RECONCILIATION ENGINE",
+      "orchestrator": "ExecutionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ReconciliationResult",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 60,
+      "engine_name": "FAILSAFE / RESILIENCE ENGINE",
+      "orchestrator": "ControlPlaneOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "SafeStateDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 61,
+      "engine_name": "POSITION MANAGER",
+      "orchestrator": "ExecutionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "PositionState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 62,
+      "engine_name": "TRADE STATE MACHINE",
+      "orchestrator": "DecisionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "TradeStateTransition",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 63,
+      "engine_name": "IMMUTABLE DECISION LEDGER",
+      "orchestrator": "AuditOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "DecisionLedgerEntry",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 64,
+      "engine_name": "JOURNAL ENGINE",
+      "orchestrator": "OutcomeOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "JournalRecord",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 65,
+      "engine_name": "OUTCOME ENGINE",
+      "orchestrator": "OutcomeOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "OutcomeRecord",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 66,
+      "engine_name": "ATTRIBUTION ENGINE",
+      "orchestrator": "OutcomeOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "AttributionRecord",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 67,
+      "engine_name": "PERFORMANCE ENGINE",
+      "orchestrator": "OutcomeOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "PerformanceMetrics",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 68,
+      "engine_name": "PERFORMANCE DECOMPOSITION ENGINE",
+      "orchestrator": "OutcomeOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "PerformanceDecomposition",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 69,
+      "engine_name": "STRATEGY DECAY ENGINE",
+      "orchestrator": "LearningOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "StrategyHealth/Decay",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 70,
+      "engine_name": "MODEL / FEATURE DRIFT ENGINE",
+      "orchestrator": "LearningOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "DriftAssessment",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 71,
+      "engine_name": "STRATEGY CORRELATION + ALPHA DEPENDENCY ENGINE",
+      "orchestrator": "DecisionResearchOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "SetupQuality/Conflict/Dependency",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 72,
+      "engine_name": "RESEARCH TRIAL REGISTRY",
+      "orchestrator": "ResearchValidationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ResearchTrial",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 73,
+      "engine_name": "BACKTEST ENGINE",
+      "orchestrator": "ResearchValidationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ValidationArtifact",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 74,
+      "engine_name": "MARKET REPLAY ENGINE",
+      "orchestrator": "ResearchValidationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ValidationArtifact",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 75,
+      "engine_name": "OVERFITTING ENGINE",
+      "orchestrator": "ResearchValidationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ValidationArtifact",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 76,
+      "engine_name": "STATISTICAL VALIDATION ENGINE",
+      "orchestrator": "ResearchValidationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ValidationArtifact",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 77,
+      "engine_name": "STRATEGY CERTIFICATION ENGINE",
+      "orchestrator": "CertificationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "CertificationRecord",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 78,
+      "engine_name": "LIVE SHADOW ENGINE",
+      "orchestrator": "CertificationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "StageResult",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 79,
+      "engine_name": "PAPER TRADING ENGINE",
+      "orchestrator": "CertificationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "StageResult",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 80,
+      "engine_name": "MICRO LIVE / PROBATION ENGINE",
+      "orchestrator": "CertificationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "StageResult",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 81,
+      "engine_name": "CAPACITY ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "CapacityAssessment",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 82,
+      "engine_name": "MODEL RISK ENGINE",
+      "orchestrator": "RiskOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "RiskDecision/RiskState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 83,
+      "engine_name": "AI RESEARCH ENGINE",
+      "orchestrator": "AIOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "AIResearchArtifact",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 84,
+      "engine_name": "AI AUTHORITY ENGINE",
+      "orchestrator": "AIOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "AIAuthorityDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 85,
+      "engine_name": "DECISION COUNCIL",
+      "orchestrator": "DecisionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "CouncilAssessment",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 86,
+      "engine_name": "EXECUTIVE DECISION ENGINE",
+      "orchestrator": "DecisionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ExecutiveDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 87,
+      "engine_name": "DECISION CONSUMER",
+      "orchestrator": "DecisionOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "DecisionConsumerRecord",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 88,
+      "engine_name": "FEEDBACK ENGINE",
+      "orchestrator": "LearningOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "FeedbackProposal",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 89,
+      "engine_name": "LEARNING GOVERNOR",
+      "orchestrator": "LearningOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "LearningDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 90,
+      "engine_name": "OBSERVABILITY ENGINE",
+      "orchestrator": "OperationsOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "TelemetryRecord",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 91,
+      "engine_name": "SYSTEM HEALTH ENGINE",
+      "orchestrator": "OperationsOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "SystemHealthState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 92,
+      "engine_name": "MARKET DATA FAILOVER ENGINE",
+      "orchestrator": "DataFoundationOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "SourceSelectionDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 93,
+      "engine_name": "CLOCK / TIME SYNCHRONIZATION ENGINE",
+      "orchestrator": "ControlPlaneOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "ClockState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 94,
+      "engine_name": "SECURITY / ACCESS CONTROL",
+      "orchestrator": "GovernanceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "governance event / audit record",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 95,
+      "engine_name": "VERSION CONTROL ENGINE",
+      "orchestrator": "GovernanceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "governance event / audit record",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 96,
+      "engine_name": "AUDIT ENGINE",
+      "orchestrator": "GovernanceOrchestrator",
+      "source": "V2.2.5_RETAINED",
+      "primary_output": "governance event / audit record",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 97,
+      "engine_name": "MARKET PROFILE / SCOPE BINDING ENGINE",
+      "orchestrator": "ScopeGovernanceOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "ActiveScope/ScopeBlocked",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 98,
+      "engine_name": "VENUE / BROKER / ACCOUNT CAPABILITY ENGINE",
+      "orchestrator": "ExternalRealityOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "CapabilitySnapshot",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 99,
+      "engine_name": "DETERMINISTIC TRADING AUTHORITY EVALUATOR",
+      "orchestrator": "AuthorityOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "AuthorityDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 100,
+      "engine_name": "AUTHORIZATION LEASE / TOCTOU ENGINE",
+      "orchestrator": "AuthorityOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "AuthorizationLease/LeaseRevocation",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 101,
+      "engine_name": "SMART ORDER ROUTING / VENUE SELECTION ENGINE",
+      "orchestrator": "ExecutionOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "RoutePlan",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 102,
+      "engine_name": "MARKET INTEGRITY SURVEILLANCE ENGINE",
+      "orchestrator": "IntegrityOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "IntegrityAssessment/IntegrityAlert",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 103,
+      "engine_name": "LEGAL / COMPLIANCE ELIGIBILITY ENGINE",
+      "orchestrator": "ComplianceOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "ComplianceDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 104,
+      "engine_name": "COUNTERPARTY / CUSTODY / SETTLEMENT RISK ENGINE",
+      "orchestrator": "ExternalRealityOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "CounterpartyRiskDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 105,
+      "engine_name": "TREASURY / CASH / COLLATERAL ENGINE",
+      "orchestrator": "CapitalOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "TreasuryState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 106,
+      "engine_name": "ACCOUNTING / PNL / FX VALUATION ENGINE",
+      "orchestrator": "OutcomeOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "AccountingSnapshot",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 107,
+      "engine_name": "CORPORATE ACTION / INSTRUMENT LIFECYCLE ENGINE",
+      "orchestrator": "MarketProfileOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "LifecycleAdjustedInstrumentState",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 108,
+      "engine_name": "REFERENCE PRICE / ORACLE / FIXING ENGINE",
+      "orchestrator": "MarketIntelligenceOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "ReferencePriceSnapshot",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 109,
+      "engine_name": "CYBERSECURITY / SUPPLY-CHAIN INTEGRITY ENGINE",
+      "orchestrator": "SecurityOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "SecurityIntegrityDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 110,
+      "engine_name": "INCIDENT / BCP / DISASTER-RECOVERY ENGINE",
+      "orchestrator": "OperationsOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "RecoveryAuthorityDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 111,
+      "engine_name": "MODEL / STRATEGY ARTIFACT & RELEASE ATTESTATION ENGINE",
+      "orchestrator": "ReleaseOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "ReleaseAttestation",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "engine_id": 112,
+      "engine_name": "DATA ENTITLEMENT / LICENSING ENGINE",
+      "orchestrator": "DataFoundationOrchestrator",
+      "source": "V3.0.0_ADDED",
+      "primary_output": "EntitlementDecision",
+      "runtime_status": "NOT_IMPLEMENTED"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+dist/
+build/
+
+# Runtime output
+*.log
+data/*
+!data/README.md
+evidence/*
+!evidence/README.md
+!evidence/*.md
+
+# Editors / operating systems
+.idea/
+.DS_Store
+Thumbs.db
