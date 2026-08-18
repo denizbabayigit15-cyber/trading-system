@@ -9,13 +9,14 @@ profitability claim, or live-trading release.
 | State | Value |
 |---|---|
 | Contract baseline | V3.0.0 review candidate |
-| Implementation slice | W0 foundation + non-authoritative question catalog candidate |
+| Implementation slice | W0 foundation + fail-closed question review decision gate |
 | Python | 3.14.7 |
 | PostgreSQL | 18.6 Bookworm |
 | pgAdmin | 9.17 |
 | Engine catalog | 112 entries; all `NOT_IMPLEMENTED` |
 | Question catalog | 900 source-faithful candidates; all `UNKNOWN / NOT_EXECUTED` |
 | First-wave review | 150 queued; all `REVIEW_REQUIRED / UNBOUND` |
+| Review decisions | 0 decisions; 0 independently approved; 0 adopted |
 | Pull-request gates | GitHub CI: contracts, tests, Ruff, formatting, and Mypy |
 | Runtime tests | Only scaffold tests included |
 | R1 code-ready | `FALSE` |
@@ -28,6 +29,7 @@ uv sync --all-groups
 uv run python scripts/generate_local_env.py
 uv run python scripts/generate_question_catalog.py --check
 uv run python scripts/generate_question_review_queue.py --check
+uv run python scripts/validate_question_review_decisions.py
 docker compose up -d
 uv run alembic upgrade head
 uv run python scripts/verify_contracts.py
@@ -62,6 +64,7 @@ the WSL host, the PostgreSQL host is `127.0.0.1`.
 - `contracts/engine_registry.json` — the 112-engine catalog, not implementation evidence.
 - `contracts/questions/question_catalog_candidate.json` — deterministic 900-question extraction.
 - `contracts/questions/first_wave_review_queue.json` — fail-closed 150-item review queue.
+- `contracts/questions/question_review_decision_ledger.json` — empty, non-authoritative decision ledger.
 - `contracts/questions/README.md` — explicit blocker for the missing authoritative mappings.
 
 ## Developer completion statement

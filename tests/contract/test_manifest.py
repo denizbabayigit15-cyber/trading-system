@@ -16,5 +16,9 @@ def test_manifest_tells_the_truth() -> None:
     assert manifest["question_first_wave_review_queue_materialized"] is True
     assert manifest["question_first_wave_review_queue_count"] == 150
     assert manifest["question_first_wave_review_approved_count"] == 0
+    assert manifest["question_review_decision_ledger_materialized"] is True
+    assert manifest["question_review_decision_count"] == 0
+    assert manifest["question_review_decision_approved_count"] == 0
+    assert manifest["question_review_decision_adopted_count"] == 0
     assert manifest["question_registry_materialized"] is False
     assert manifest["blockers"]

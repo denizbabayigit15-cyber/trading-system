@@ -15,11 +15,19 @@ registry.
 non-authoritative work queue, not an approval artifact. Every item remains
 `REVIEW_REQUIRED`; every operational mapping remains `UNBOUND`.
 
+`question_review_decision_ledger.json` is the fail-closed change-control ledger
+for those 150 items. It begins with zero decisions. Draft records may remain
+unbound; an `APPROVED` record must have complete mappings, a versioned and
+hashed scope, different owner and approver identities, independent approval,
+and ordered UTC timestamps. Approval still does not mean adoption, execution,
+runtime PASS, or live authority.
+
 This package therefore records:
 
 - expected questions: 900;
 - candidate records materialized: 900 (237 binding-core source records + 663 proposed records);
 - first-wave review items materialized: 150; approved/adopted: 0;
+- review decisions materialized: 0; independently approved/adopted: 0;
 - runtime PASS: 0;
 - runtime UNKNOWN/NOT_EXECUTED: 900;
 - scope/criticality/owner/policy/test/fail-action bindings: UNBOUND;
@@ -35,4 +43,5 @@ Regenerate and verify the candidate deterministically with:
 uv run python scripts/generate_question_catalog.py
 uv run python scripts/generate_question_catalog.py --check
 uv run python scripts/generate_question_review_queue.py --check
+uv run python scripts/validate_question_review_decisions.py
 ```

@@ -8,6 +8,7 @@ from typing import Any
 from trading_system.contracts.models import (
     EngineRegistry,
     QuestionCatalogCandidate,
+    QuestionReviewDecisionLedger,
     QuestionReviewQueue,
 )
 
@@ -44,4 +45,11 @@ def load_question_catalog_candidate() -> QuestionCatalogCandidate:
 def load_question_review_queue() -> QuestionReviewQueue:
     return QuestionReviewQueue.model_validate(
         load_json("contracts/questions/first_wave_review_queue.json")
+    )
+
+
+@lru_cache(maxsize=1)
+def load_question_review_decision_ledger() -> QuestionReviewDecisionLedger:
+    return QuestionReviewDecisionLedger.model_validate(
+        load_json("contracts/questions/question_review_decision_ledger.json")
     )

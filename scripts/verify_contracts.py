@@ -10,12 +10,16 @@ from jsonschema import Draft202012Validator
 from trading_system.contracts.models import (
     EngineRegistry,
     QuestionCatalogCandidate,
+    QuestionReviewDecisionLedger,
     QuestionReviewQueue,
 )
 from trading_system.contracts.question_catalog import (
     SOURCE_DOCUMENT,
     build_question_catalog,
     render_question_catalog,
+)
+from trading_system.contracts.question_review_decisions import (
+    validate_decision_ledger_against_queue,
 )
 from trading_system.contracts.question_review_queue import (
     SOURCE_CATALOG,
@@ -55,6 +59,10 @@ def main() -> None:
         "contracts/questions/first_wave_review_queue.json",
         "schemas/question_review_queue.schema.json",
     )
+    validate(
+        "contracts/questions/question_review_decision_ledger.json",
+        "schemas/question_review_decision_ledger.schema.json",
+    )
 
     manifest = load("contracts/manifest.json")
     assert manifest["live_authorized"] is False
@@ -64,6 +72,10 @@ def main() -> None:
     assert manifest["question_first_wave_review_queue_materialized"] is True
     assert manifest["question_first_wave_review_queue_count"] == 150
     assert manifest["question_first_wave_review_approved_count"] == 0
+    assert manifest["question_review_decision_ledger_materialized"] is True
+    assert manifest["question_review_decision_count"] == 0
+    assert manifest["question_review_decision_approved_count"] == 0
+    assert manifest["question_review_decision_adopted_count"] == 0
     assert manifest["question_registry_materialized"] is False
 
     registry = EngineRegistry.model_validate(load("contracts/engine_registry.json"))
@@ -100,6 +112,17 @@ def main() -> None:
         "first-wave review queue is stale relative to the candidate catalog"
     )
 
+    decision_ledger = QuestionReviewDecisionLedger.model_validate(
+        load("contracts/questions/question_review_decision_ledger.json")
+    )
+    validate_decision_ledger_against_queue(decision_ledger, queue)
+    assert decision_ledger.decision_count == 0
+    assert decision_ledger.draft_count == 0
+    assert decision_ledger.approved_count == 0
+    assert decision_ledger.adopted_count == 0
+    assert decision_ledger.runtime_pass_count == 0
+    assert decision_ledger.live_authorized is False
+
     reason_codes = load("contracts/reason_codes.json")["codes"]
     codes = [item["code"] for item in reason_codes]
     assert len(codes) == len(set(codes))
@@ -118,8 +141,14 @@ def main() -> None:
         "unexpected question registry must be reviewed before adoption"
     )
 
-    print("PASS: contracts, integrity, 900-question catalog, and 150-item review queue")
-    print("EXPECTED BLOCKER: authoritative owner/policy/test/fail-action registry is absent")
+    print(
+        "PASS: contracts, integrity, 900-question catalog, 150-item review queue, "
+        "and fail-closed decision ledger"
+    )
+    print(
+        "EXPECTED BLOCKER: zero independently approved decisions; authoritative "
+        "owner/policy/test/fail-action registry is absent"
+    )
     print("STATUS: R1_CODE_READY=false; LIVE_AUTHORIZED=false")
 
 

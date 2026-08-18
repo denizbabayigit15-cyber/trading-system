@@ -45,6 +45,9 @@ jobs:
       - name: Verify generated first-wave review queue
         run: uv run --frozen python scripts/generate_question_review_queue.py --check
 
+      - name: Validate question review decisions
+        run: uv run --frozen python scripts/validate_question_review_decisions.py
+
       - name: Verify contracts and integrity
         run: uv run --frozen python scripts/verify_contracts.py
 
