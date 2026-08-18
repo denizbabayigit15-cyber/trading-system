@@ -4,7 +4,7 @@
   "package_version": "0.1.0",
   "change_request": "CR-V3.0.0-PRECODE-001",
   "implementation_wave": "W0",
-  "implementation_status": "FOUNDATION_SCAFFOLD",
+  "implementation_status": "FOUNDATION_QUESTION_CATALOG_CANDIDATE",
   "r1_code_ready": false,
   "r2_test_ready": false,
   "r3_operationally_live_ready": false,
@@ -12,13 +12,14 @@
   "live_authorized": false,
   "engine_count_expected": 112,
   "question_count_expected": 900,
+  "question_catalog_candidate_materialized": true,
+  "question_catalog_candidate_count": 900,
   "question_registry_materialized": false,
   "external_values_status": "UNBOUND_REQUIRED",
   "blockers": [
-    "900-question machine-readable mapping was referenced but not present in the supplied baseline files",
+    "authoritative owner/policy/test/fail-action question registry was referenced but not present in the supplied baseline files",
     "112 full per-engine contracts are not implemented",
     "external scope, broker, venue, account, entitlement, capital, fee, threshold and legal values are unbound",
     "independent validation and owner acceptance evidence are absent"
   ]
 }
-

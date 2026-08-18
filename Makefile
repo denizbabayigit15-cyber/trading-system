@@ -1,10 +1,13 @@
-.PHONY: sync env infra-up infra-down db-upgrade verify test lint format api status
+.PHONY: sync env catalog infra-up infra-down db-upgrade verify test lint format api status
 
 sync:
 	uv sync --all-groups
 
 env:
 	uv run python scripts/generate_local_env.py
+
+catalog:
+	uv run python scripts/generate_question_catalog.py
 
 infra-up:
 	docker compose up -d
@@ -17,6 +20,7 @@ db-upgrade:
 
 verify:
 	uv run python scripts/verify_environment.py
+	uv run python scripts/generate_question_catalog.py --check
 	uv run python scripts/verify_contracts.py
 
 test:
@@ -34,4 +38,3 @@ api:
 
 status:
 	docker compose ps
-

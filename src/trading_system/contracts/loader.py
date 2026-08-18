@@ -5,7 +5,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from trading_system.contracts.models import EngineRegistry
+from trading_system.contracts.models import EngineRegistry, QuestionCatalogCandidate
 
 
 def repository_root() -> Path:
@@ -27,3 +27,10 @@ def load_json(relative_path: str) -> dict[str, Any]:
 @lru_cache(maxsize=1)
 def load_engine_registry() -> EngineRegistry:
     return EngineRegistry.model_validate(load_json("contracts/engine_registry.json"))
+
+
+@lru_cache(maxsize=1)
+def load_question_catalog_candidate() -> QuestionCatalogCandidate:
+    return QuestionCatalogCandidate.model_validate(
+        load_json("contracts/questions/question_catalog_candidate.json")
+    )
