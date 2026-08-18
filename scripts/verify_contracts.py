@@ -12,6 +12,7 @@ from trading_system.contracts.models import (
     QuestionCatalogCandidate,
     QuestionReviewDecisionLedger,
     QuestionReviewQueue,
+    QuestionReviewWorkbookManifest,
 )
 from trading_system.contracts.question_catalog import (
     SOURCE_DOCUMENT,
@@ -25,6 +26,9 @@ from trading_system.contracts.question_review_queue import (
     SOURCE_CATALOG,
     build_question_review_queue_from_path,
     render_question_review_queue,
+)
+from trading_system.contracts.question_review_workbook import (
+    validate_question_review_workbook,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -63,6 +67,10 @@ def main() -> None:
         "contracts/questions/question_review_decision_ledger.json",
         "schemas/question_review_decision_ledger.schema.json",
     )
+    validate(
+        "contracts/questions/question_review_workbook_manifest.json",
+        "schemas/question_review_workbook_manifest.schema.json",
+    )
 
     manifest = load("contracts/manifest.json")
     assert manifest["live_authorized"] is False
@@ -76,6 +84,9 @@ def main() -> None:
     assert manifest["question_review_decision_count"] == 0
     assert manifest["question_review_decision_approved_count"] == 0
     assert manifest["question_review_decision_adopted_count"] == 0
+    assert manifest["question_review_workbook_materialized"] is True
+    assert manifest["question_review_workbook_question_count"] == 150
+    assert manifest["question_review_workbook_prefilled_decision_count"] == 0
     assert manifest["question_registry_materialized"] is False
 
     registry = EngineRegistry.model_validate(load("contracts/engine_registry.json"))
@@ -123,6 +134,11 @@ def main() -> None:
     assert decision_ledger.runtime_pass_count == 0
     assert decision_ledger.live_authorized is False
 
+    workbook_manifest = QuestionReviewWorkbookManifest.model_validate(
+        load("contracts/questions/question_review_workbook_manifest.json")
+    )
+    validate_question_review_workbook(workbook_manifest, queue, ROOT)
+
     reason_codes = load("contracts/reason_codes.json")["codes"]
     codes = [item["code"] for item in reason_codes]
     assert len(codes) == len(set(codes))
@@ -143,7 +159,7 @@ def main() -> None:
 
     print(
         "PASS: contracts, integrity, 900-question catalog, 150-item review queue, "
-        "and fail-closed decision ledger"
+        "fail-closed decision ledger, and 150-row review workbook"
     )
     print(
         "EXPECTED BLOCKER: zero independently approved decisions; authoritative "

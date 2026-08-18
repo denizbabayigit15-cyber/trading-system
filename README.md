@@ -17,6 +17,7 @@ profitability claim, or live-trading release.
 | Question catalog | 900 source-faithful candidates; all `UNKNOWN / NOT_EXECUTED` |
 | First-wave review | 150 queued; all `REVIEW_REQUIRED / UNBOUND` |
 | Review decisions | 0 decisions; 0 independently approved; 0 adopted |
+| Review workbook | 150 source questions; all editable decision fields initially empty |
 | Pull-request gates | GitHub CI: contracts, tests, Ruff, formatting, and Mypy |
 | Runtime tests | Only scaffold tests included |
 | R1 code-ready | `FALSE` |
@@ -30,6 +31,7 @@ uv run python scripts/generate_local_env.py
 uv run python scripts/generate_question_catalog.py --check
 uv run python scripts/generate_question_review_queue.py --check
 uv run python scripts/validate_question_review_decisions.py
+uv run python scripts/validate_question_review_workbook.py
 docker compose up -d
 uv run alembic upgrade head
 uv run python scripts/verify_contracts.py
@@ -65,6 +67,7 @@ the WSL host, the PostgreSQL host is `127.0.0.1`.
 - `contracts/questions/question_catalog_candidate.json` — deterministic 900-question extraction.
 - `contracts/questions/first_wave_review_queue.json` — fail-closed 150-item review queue.
 - `contracts/questions/question_review_decision_ledger.json` — empty, non-authoritative decision ledger.
+- `research/question_review/templates/W0_FIRST_WAVE_QUESTION_REVIEW_WORKBOOK_V0_1_0.xlsx` — protected review-input template.
 - `contracts/questions/README.md` — explicit blocker for the missing authoritative mappings.
 
 ## Developer completion statement

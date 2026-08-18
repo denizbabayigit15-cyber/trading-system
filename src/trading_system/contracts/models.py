@@ -385,6 +385,42 @@ class QuestionReviewDecisionLedger(BaseModel):
         return self
 
 
+class QuestionReviewWorkbookManifest(BaseModel):
+    """Integrity and authority boundary for the human-editable review workbook."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    schema_version: Literal["1.0.0"]
+    contract_version: Literal["3.0.0"]
+    workbook_version: Literal["0.1.0"]
+    workbook_id: Literal["W0-FIRST-WAVE-QUESTION-REVIEW-WORKBOOK"]
+    authority_status: Literal["NON_AUTHORITATIVE_REVIEW_INPUT_TEMPLATE"]
+    source_queue_path: Literal["contracts/questions/first_wave_review_queue.json"]
+    source_queue_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    workbook_path: Literal[
+        "research/question_review/templates/W0_FIRST_WAVE_QUESTION_REVIEW_WORKBOOK_V0_1_0.xlsx"
+    ]
+    workbook_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    sheet_names: tuple[str, ...]
+    editable_decision_statuses: tuple[str, ...]
+    expected_question_count: Literal[150]
+    prefilled_decision_count: Literal[0]
+    approved_count: Literal[0]
+    adopted_count: Literal[0]
+    runtime_pass_count: Literal[0]
+    live_authorized: Literal[False]
+
+    @model_validator(mode="after")
+    def validate_workbook_boundary(self) -> Self:
+        if self.source_queue_sha256 != QUESTION_REVIEW_QUEUE_SHA256:
+            raise ValueError("workbook source hash is not the reviewed queue hash")
+        if self.sheet_names != ("Yönergeler", "İnceleme", "Sözlük"):
+            raise ValueError("review workbook must expose the three reviewed sheets")
+        if self.editable_decision_statuses != ("DRAFT", "READY_FOR_REVIEW"):
+            raise ValueError("workbook cannot expose approval or adoption as editable states")
+        return self
+
+
 def _payload_hash(payload: dict[str, Any]) -> str:
     canonical = json.dumps(
         payload,

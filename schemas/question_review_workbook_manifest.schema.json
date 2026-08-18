@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/question_review_workbook_manifest.schema.json",
+  "title": "W0 First-Wave Question Review Workbook Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "contract_version",
+    "workbook_version",
+    "workbook_id",
+    "authority_status",
+    "source_queue_path",
+    "source_queue_sha256",
+    "workbook_path",
+    "workbook_sha256",
+    "sheet_names",
+    "editable_decision_statuses",
+    "expected_question_count",
+    "prefilled_decision_count",
+    "approved_count",
+    "adopted_count",
+    "runtime_pass_count",
+    "live_authorized"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "contract_version": {"const": "3.0.0"},
+    "workbook_version": {"const": "0.1.0"},
+    "workbook_id": {"const": "W0-FIRST-WAVE-QUESTION-REVIEW-WORKBOOK"},
+    "authority_status": {"const": "NON_AUTHORITATIVE_REVIEW_INPUT_TEMPLATE"},
+    "source_queue_path": {"const": "contracts/questions/first_wave_review_queue.json"},
+    "source_queue_sha256": {
+      "const": "c2b36a809ffacb7a8299397771d678e1d6d77ff0f6f8608c48fe3bad8e7df057"
+    },
+    "workbook_path": {
+      "const": "research/question_review/templates/W0_FIRST_WAVE_QUESTION_REVIEW_WORKBOOK_V0_1_0.xlsx"
+    },
+    "workbook_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sheet_names": {"const": ["Yönergeler", "İnceleme", "Sözlük"]},
+    "editable_decision_statuses": {"const": ["DRAFT", "READY_FOR_REVIEW"]},
+    "expected_question_count": {"const": 150},
+    "prefilled_decision_count": {"const": 0},
+    "approved_count": {"const": 0},
+    "adopted_count": {"const": 0},
+    "runtime_pass_count": {"const": 0},
+    "live_authorized": {"const": false}
+  },
+  "additionalProperties": false
+}

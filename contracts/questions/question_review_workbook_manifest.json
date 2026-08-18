@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "3.0.0",
+  "workbook_version": "0.1.0",
+  "workbook_id": "W0-FIRST-WAVE-QUESTION-REVIEW-WORKBOOK",
+  "authority_status": "NON_AUTHORITATIVE_REVIEW_INPUT_TEMPLATE",
+  "source_queue_path": "contracts/questions/first_wave_review_queue.json",
+  "source_queue_sha256": "c2b36a809ffacb7a8299397771d678e1d6d77ff0f6f8608c48fe3bad8e7df057",
+  "workbook_path": "research/question_review/templates/W0_FIRST_WAVE_QUESTION_REVIEW_WORKBOOK_V0_1_0.xlsx",
+  "workbook_sha256": "9c5569580a2e5a07de9ff73071fb7ee0de275420515baa86fda3d9feb56a1b3c",
+  "sheet_names": ["Yönergeler", "İnceleme", "Sözlük"],
+  "editable_decision_statuses": ["DRAFT", "READY_FOR_REVIEW"],
+  "expected_question_count": 150,
+  "prefilled_decision_count": 0,
+  "approved_count": 0,
+  "adopted_count": 0,
+  "runtime_pass_count": 0,
+  "live_authorized": false
+}

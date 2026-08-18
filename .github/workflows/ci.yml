@@ -48,6 +48,9 @@ jobs:
       - name: Validate question review decisions
         run: uv run --frozen python scripts/validate_question_review_decisions.py
 
+      - name: Validate question review workbook
+        run: uv run --frozen python scripts/validate_question_review_workbook.py
+
       - name: Verify contracts and integrity
         run: uv run --frozen python scripts/verify_contracts.py
 
