@@ -1,0 +1,58 @@
+name: CI
+
+"on":
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contract-quality:
+    name: Contract and quality gates
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install pinned uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.5"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install pinned Python
+        run: uv python install 3.14.7
+
+      - name: Synchronize locked dependencies
+        run: uv sync --locked --all-groups
+
+      - name: Verify generated question catalog
+        run: uv run --frozen python scripts/generate_question_catalog.py --check
+
+      - name: Verify contracts and integrity
+        run: uv run --frozen python scripts/verify_contracts.py
+
+      - name: Run tests
+        run: uv run --frozen pytest
+
+      - name: Run Ruff lint
+        run: uv run --frozen ruff check .
+
+      - name: Check Ruff formatting
+        run: uv run --frozen ruff format --check .
+
+      - name: Run strict type checking
+        run: uv run --frozen mypy src

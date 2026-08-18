@@ -15,6 +15,7 @@ profitability claim, or live-trading release.
 | pgAdmin | 9.17 |
 | Engine catalog | 112 entries; all `NOT_IMPLEMENTED` |
 | Question catalog | 900 source-faithful candidates; all `UNKNOWN / NOT_EXECUTED` |
+| Pull-request gates | GitHub CI: contracts, tests, Ruff, formatting, and Mypy |
 | Runtime tests | Only scaffold tests included |
 | R1 code-ready | `FALSE` |
 | Live authorized | `FALSE` and database-constrained |
