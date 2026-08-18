@@ -9,11 +9,12 @@ profitability claim, or live-trading release.
 | State | Value |
 |---|---|
 | Contract baseline | V3.0.0 review candidate |
-| Implementation slice | W0 repository/runtime + PostgreSQL foundation |
+| Implementation slice | W0 foundation + non-authoritative question catalog candidate |
 | Python | 3.14.7 |
 | PostgreSQL | 18.6 Bookworm |
 | pgAdmin | 9.17 |
 | Engine catalog | 112 entries; all `NOT_IMPLEMENTED` |
+| Question catalog | 900 source-faithful candidates; all `UNKNOWN / NOT_EXECUTED` |
 | Runtime tests | Only scaffold tests included |
 | R1 code-ready | `FALSE` |
 | Live authorized | `FALSE` and database-constrained |
@@ -23,6 +24,7 @@ profitability claim, or live-trading release.
 ```bash
 uv sync --all-groups
 uv run python scripts/generate_local_env.py
+uv run python scripts/generate_question_catalog.py --check
 docker compose up -d
 uv run alembic upgrade head
 uv run python scripts/verify_contracts.py
@@ -55,11 +57,11 @@ the WSL host, the PostgreSQL host is `127.0.0.1`.
 - `docs/baseline/` — retained V3.0.0 source documents.
 - `docs/runbooks/LOCAL_DEVELOPMENT.md` — detailed local operation.
 - `contracts/engine_registry.json` — the 112-engine catalog, not implementation evidence.
-- `contracts/questions/README.md` — explicit blocker for the missing machine-readable 900-question mapping.
+- `contracts/questions/question_catalog_candidate.json` — deterministic 900-question extraction.
+- `contracts/questions/README.md` — explicit blocker for the missing authoritative mappings.
 
 ## Developer completion statement
 
 > I implemented only approved behavior, preserved UNBOUND external inputs, did
 > not activate a strategy, did not claim runtime PASS without evidence, and did
 > not grant live authority.
-

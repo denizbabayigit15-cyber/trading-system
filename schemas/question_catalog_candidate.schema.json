@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/question_catalog_candidate.schema.json",
+  "title": "Trading System Non-Authoritative Question Catalog Candidate",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "contract_version",
+    "catalog_version",
+    "authority_status",
+    "source_document",
+    "source_sha256",
+    "authoritative_registry_path",
+    "authoritative_registry_materialized",
+    "expected_count",
+    "binding_core_count",
+    "proposed_extension_count",
+    "runtime_pass_count",
+    "unbound_count",
+    "live_authorized",
+    "questions"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "contract_version": {"const": "3.0.0"},
+    "catalog_version": {"const": "0.1.0"},
+    "authority_status": {"const": "NON_AUTHORITATIVE_CANDIDATE"},
+    "source_document": {
+      "const": "docs/baseline/TRADING_SYSTEM_V3_0_0_PRECODE_QUESTION_BANK_ADOPTION_CANDIDATE.md"
+    },
+    "source_sha256": {
+      "const": "87fdc3e6de9a9e5b76fe470faa310ed57a9392cf7d5ecfd3f672149bc35a5544"
+    },
+    "authoritative_registry_path": {
+      "const": "contracts/questions/question_registry.json"
+    },
+    "authoritative_registry_materialized": {"const": false},
+    "expected_count": {"const": 900},
+    "binding_core_count": {"const": 237},
+    "proposed_extension_count": {"const": 663},
+    "runtime_pass_count": {"const": 0},
+    "unbound_count": {"const": 900},
+    "live_authorized": {"const": false},
+    "questions": {
+      "type": "array",
+      "minItems": 900,
+      "maxItems": 900,
+      "items": {"$ref": "#/$defs/question"}
+    }
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "required": [
+        "ordinal",
+        "question_id",
+        "question_version",
+        "source_layer",
+        "source_section",
+        "source_line",
+        "question_text",
+        "source_status",
+        "scope_hash",
+        "applicability",
+        "criticality",
+        "answer_status",
+        "execution_status",
+        "information_class",
+        "evidence_id",
+        "contract_id",
+        "policy_id",
+        "test_id",
+        "scenario_id",
+        "observation_window",
+        "fail_action",
+        "owner",
+        "approver",
+        "recertification_status"
+      ],
+      "properties": {
+        "ordinal": {"type": "integer", "minimum": 1, "maximum": 900},
+        "question_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9]*-[0-9]{3}$"},
+        "question_version": {"const": "UNBOUND"},
+        "source_layer": {
+          "enum": ["V2.2.5_BINDING_CORE", "V2.3.1_PROPOSED_EXTENSION"]
+        },
+        "source_section": {"type": "string", "minLength": 1},
+        "source_line": {"type": "integer", "minimum": 1},
+        "question_text": {"type": "string", "minLength": 1},
+        "source_status": {
+          "enum": ["BINDING_CORE", "YENİ / ÖNERİLEN", "YENİ / KOŞULLU"]
+        },
+        "scope_hash": {"const": "UNBOUND"},
+        "applicability": {"const": "UNBOUND"},
+        "criticality": {"const": "UNBOUND"},
+        "answer_status": {"const": "UNKNOWN"},
+        "execution_status": {"const": "NOT_EXECUTED"},
+        "information_class": {"const": "UNKNOWN"},
+        "evidence_id": {"const": "UNBOUND"},
+        "contract_id": {"const": "UNBOUND"},
+        "policy_id": {"const": "UNBOUND"},
+        "test_id": {"const": "UNBOUND"},
+        "scenario_id": {"const": "UNBOUND"},
+        "observation_window": {"const": "UNBOUND"},
+        "fail_action": {"const": "UNBOUND"},
+        "owner": {"const": "UNBOUND"},
+        "approver": {"const": "UNBOUND"},
+        "recertification_status": {"const": "NOT_EXECUTED"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

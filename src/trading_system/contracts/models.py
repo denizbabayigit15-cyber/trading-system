@@ -10,6 +10,18 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 from trading_system.core.ids import new_id
 from trading_system.core.time import require_utc, utc_now
 
+QUESTION_BANK_SHA256 = "87fdc3e6de9a9e5b76fe470faa310ed57a9392cf7d5ecfd3f672149bc35a5544"
+
+type QuestionSourceLayer = Literal[
+    "V2.2.5_BINDING_CORE",
+    "V2.3.1_PROPOSED_EXTENSION",
+]
+type QuestionSourceStatus = Literal[
+    "BINDING_CORE",
+    "YENİ / ÖNERİLEN",
+    "YENİ / KOŞULLU",
+]
+
 
 class EngineRecord(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
@@ -35,6 +47,96 @@ class EngineRegistry(BaseModel):
         ids = [engine.engine_id for engine in self.engines]
         if ids != list(range(1, 113)):
             raise ValueError("engine registry must contain ordered unique IDs 1..112")
+        return self
+
+
+class QuestionCatalogRecord(BaseModel):
+    """A source-faithful question record without invented operational bindings."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    ordinal: int = Field(ge=1, le=900)
+    question_id: str = Field(pattern=r"^[A-Z][A-Z0-9]*-[0-9]{3}$")
+    question_version: Literal["UNBOUND"]
+    source_layer: QuestionSourceLayer
+    source_section: str = Field(min_length=1)
+    source_line: int = Field(ge=1)
+    question_text: str = Field(min_length=1)
+    source_status: QuestionSourceStatus
+    scope_hash: Literal["UNBOUND"]
+    applicability: Literal["UNBOUND"]
+    criticality: Literal["UNBOUND"]
+    answer_status: Literal["UNKNOWN"]
+    execution_status: Literal["NOT_EXECUTED"]
+    information_class: Literal["UNKNOWN"]
+    evidence_id: Literal["UNBOUND"]
+    contract_id: Literal["UNBOUND"]
+    policy_id: Literal["UNBOUND"]
+    test_id: Literal["UNBOUND"]
+    scenario_id: Literal["UNBOUND"]
+    observation_window: Literal["UNBOUND"]
+    fail_action: Literal["UNBOUND"]
+    owner: Literal["UNBOUND"]
+    approver: Literal["UNBOUND"]
+    recertification_status: Literal["NOT_EXECUTED"]
+
+
+class QuestionCatalogCandidate(BaseModel):
+    """Non-authoritative extraction of the retained 900-question Markdown bank."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    schema_version: Literal["1.0.0"]
+    contract_version: Literal["3.0.0"]
+    catalog_version: Literal["0.1.0"]
+    authority_status: Literal["NON_AUTHORITATIVE_CANDIDATE"]
+    source_document: Literal[
+        "docs/baseline/TRADING_SYSTEM_V3_0_0_PRECODE_QUESTION_BANK_ADOPTION_CANDIDATE.md"
+    ]
+    source_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    authoritative_registry_path: Literal["contracts/questions/question_registry.json"]
+    authoritative_registry_materialized: Literal[False]
+    expected_count: Literal[900]
+    binding_core_count: Literal[237]
+    proposed_extension_count: Literal[663]
+    runtime_pass_count: Literal[0]
+    unbound_count: Literal[900]
+    live_authorized: Literal[False]
+    questions: tuple[QuestionCatalogRecord, ...]
+
+    @model_validator(mode="after")
+    def validate_complete_candidate(self) -> Self:
+        if self.source_sha256 != QUESTION_BANK_SHA256:
+            raise ValueError("question-bank source hash is not the reviewed baseline hash")
+        if len(self.questions) != self.expected_count:
+            raise ValueError("question catalog must contain exactly 900 records")
+
+        ordinals = [record.ordinal for record in self.questions]
+        if ordinals != list(range(1, 901)):
+            raise ValueError("question catalog must contain ordered ordinals 1..900")
+
+        question_ids = [record.question_id for record in self.questions]
+        if len(question_ids) != len(set(question_ids)):
+            raise ValueError("question IDs must be unique")
+
+        source_lines = [record.source_line for record in self.questions]
+        if source_lines != sorted(source_lines) or len(source_lines) != len(set(source_lines)):
+            raise ValueError("question source lines must be strictly increasing")
+
+        core = self.questions[: self.binding_core_count]
+        proposed = self.questions[self.binding_core_count :]
+        if any(record.source_layer != "V2.2.5_BINDING_CORE" for record in core):
+            raise ValueError("the first 237 records must be the retained binding core")
+        if any(record.source_status != "BINDING_CORE" for record in core):
+            raise ValueError("binding-core source status is inconsistent")
+        if any(record.source_layer != "V2.3.1_PROPOSED_EXTENSION" for record in proposed):
+            raise ValueError("the final 663 records must be proposed extensions")
+
+        proposed_statuses = [record.source_status for record in proposed]
+        if proposed_statuses.count("YENİ / ÖNERİLEN") != 596:
+            raise ValueError("expected 596 proposed extension records")
+        if proposed_statuses.count("YENİ / KOŞULLU") != 67:
+            raise ValueError("expected 67 conditional extension records")
         return self
 
 
