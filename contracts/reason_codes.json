@@ -67,7 +67,474 @@
       "category": "SECURITY",
       "criticality": "PRODUCTION_BLOCKING",
       "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "SCOPE_EXTERNAL_BINDING_MISSING",
+      "category": "SCOPE",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "AUTH_HARD_PREDICATE_FAILED",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "AUTH_CERTIFICATION_SCOPE_MISMATCH",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "AUTH_R4_NOT_CERTIFIED",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "TEMPORAL_MAX_AGE_UNBOUND",
+      "category": "TEMPORAL_TRUTH",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "TEMPORAL_EVENT_AFTER_AVAILABILITY",
+      "category": "TEMPORAL_TRUTH",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "TEMPORAL_FUTURE_KNOWLEDGE",
+      "category": "TEMPORAL_TRUTH",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "TEMPORAL_NOT_AVAILABLE_AT_DECISION",
+      "category": "TEMPORAL_TRUTH",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "TEMPORAL_RECEIVED_AFTER_DECISION",
+      "category": "TEMPORAL_TRUTH",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "TEMPORAL_STALE",
+      "category": "TEMPORAL_TRUTH",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "MARKET_DATA_DUPLICATE_OR_OUT_OF_ORDER",
+      "category": "MARKET_DATA",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "QUARANTINE_EVENT"
+    },
+    {
+      "code": "MARKET_DATA_SEQUENCE_GAP",
+      "category": "MARKET_DATA",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DEGRADE_AND_RESYNCHRONIZE"
+    },
+    {
+      "code": "ORDER_NOT_AUTHORIZED",
+      "category": "EXECUTION",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "REJECT_ORDER"
+    },
+    {
+      "code": "ORDER_EXTERNAL_STATE_UNKNOWN",
+      "category": "EXECUTION",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "ENTER_RECONCILIATION_REQUIRED"
+    },
+    {
+      "code": "RISK_LIMIT_UNBOUND",
+      "category": "RISK",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "RISK_LIMIT_EXCEEDED",
+      "category": "RISK",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "KILL_SWITCH_ACTIVE",
+      "category": "RISK",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "ENTER_SAFE_MODE"
+    },
+    {
+      "code": "RECOVERY_HEALTH_NOT_VERIFIED",
+      "category": "OPERATIONS",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "REMAIN_SAFE_MODE"
+    },
+    {
+      "code": "RECOVERY_AUTHORITY_REVALIDATION_REQUIRED",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "HALT_REQUIRES_MANUAL_RECOVERY",
+      "category": "OPERATIONS",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "REMAIN_HALTED"
+    },
+    {
+      "code": "ROLLOUT_DISABLED",
+      "category": "OPERATIONS",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "REMAIN_DISABLED"
+    },
+    {
+      "code": "ROLLOUT_ORDER_INVALID",
+      "category": "OPERATIONS",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_PROMOTION"
+    },
+    {
+      "code": "ROLLOUT_EVIDENCE_MISSING",
+      "category": "OPERATIONS",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_PROMOTION"
+    },
+    {
+      "code": "ROLLOUT_LIVE_AUTHORITY_MUST_BE_EXTERNAL",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_PROMOTION"
+    },
+    {
+      "code": "LEASE_AUTHORITY_DENIED",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "LEASE_SCOPE_MISMATCH",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "LEASE_INVALID_TTL",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "LEASE_NOT_FOUND",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "LEASE_REVOKED",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "LEASE_ALREADY_REVOKED",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "LEASE_ALREADY_CONSUMED",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "LEASE_EXPIRED",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "LEASE_VERSION_MISMATCH",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "LEASE_SAFETY_PREDICATE_FAILED",
+      "category": "AUTHORITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "LEASE_CONSUMED",
+      "category": "AUTHORITY",
+      "criticality": "CONTROL",
+      "fail_action": "NONE"
+    },
+    {
+      "code": "LEASE_ISSUED",
+      "category": "AUTHORITY",
+      "criticality": "CONTROL",
+      "fail_action": "NONE"
+    },
+    {
+      "code": "MARKET_DATA_CONNECTION_FAILED",
+      "category": "MARKET_DATA",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DEGRADE_AND_RESYNCHRONIZE"
+    },
+    {
+      "code": "ROLLOUT_PROMOTED",
+      "category": "OPERATIONS",
+      "criticality": "CONTROL",
+      "fail_action": "NONE"
+    },
+    {
+      "code": "DATA_ENTITLEMENT_UNBOUND",
+      "category": "MARKET_DATA",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "DATA_ENTITLEMENT_BOUND",
+      "category": "MARKET_DATA",
+      "criticality": "CONTROL",
+      "fail_action": "NONE"
+    },
+    {
+      "code": "DATA_ENTITLEMENT_EXPIRED",
+      "category": "MARKET_DATA",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "COMPLIANCE_LAW_UNBOUND",
+      "category": "COMPLIANCE",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "COMPLIANCE_RESTRICTED_PRODUCT",
+      "category": "COMPLIANCE",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "VENUE_CAPABILITY_UNKNOWN",
+      "category": "EXECUTION",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "TREASURY_STATE_UNKNOWN",
+      "category": "CAPITAL",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "COUNTERPARTY_LIMIT_UNBOUND",
+      "category": "COUNTERPARTY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "COUNTERPARTY_SETTLEMENT_UNKNOWN",
+      "category": "COUNTERPARTY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "ORDER_NOT_FOUND",
+      "category": "EXECUTION",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "ENTER_RECONCILIATION_REQUIRED"
+    },
+    {
+      "code": "ORDER_AMEND_NOT_ALLOWED",
+      "category": "EXECUTION",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "REJECT_ORDER"
+    },
+    {
+      "code": "ORDER_AMEND_EMPTY",
+      "category": "EXECUTION",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "REJECT_ORDER"
+    },
+    {
+      "code": "ORDER_IDEMPOTENCY_MISMATCH",
+      "category": "EXECUTION",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "ENTER_RECONCILIATION_REQUIRED"
+    },
+    {
+      "code": "ORDER_CANCEL_NOT_ALLOWED",
+      "category": "EXECUTION",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "REJECT_ORDER"
+    },
+    {
+      "code": "FEATURE_QUOTE_MISSING",
+      "category": "MARKET_DATA",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "FEATURE_QUOTE_INCOMPLETE",
+      "category": "MARKET_DATA",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "FEATURE_TRADE_MISSING",
+      "category": "MARKET_DATA",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "FEATURE_SAMPLE_INSUFFICIENT",
+      "category": "MARKET_DATA",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "FEATURE_BOOK_MISSING",
+      "category": "MARKET_DATA",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "VALIDATION_SAMPLE_MISSING",
+      "category": "RESEARCH",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "INDEPENDENT_REVIEW_REQUIRED",
+      "category": "CERTIFICATION",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "RISK_SAMPLE_MISSING",
+      "category": "RISK",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "RISK_EXPOSURE_MISSING",
+      "category": "RISK",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "HEALTH_CHECK_UNKNOWN",
+      "category": "OBSERVABILITY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "NO_TRADE_CONDITION",
+      "category": "STRATEGY",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "STRATEGY_INPUT_UNBOUND",
+      "category": "STRATEGY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "STRATEGY_DEPENDENCY_INVALID",
+      "category": "STRATEGY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "EDGE_BELOW_THRESHOLD",
+      "category": "STRATEGY",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "DATA_SOURCE_UNBOUND",
+      "category": "MARKET_DATA",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "DATA_SEQUENCE_GAP",
+      "category": "MARKET_DATA",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "ENTER_RECONCILIATION_REQUIRED"
+    },
+    {
+      "code": "DATA_STALE",
+      "category": "MARKET_DATA",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "RISK_INPUT_INVALID",
+      "category": "RISK",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "PERFORMANCE_INPUT_MISSING",
+      "category": "PERFORMANCE",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "DRIFT_INPUT_MISSING",
+      "category": "PERFORMANCE",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "CORRELATION_INPUT_MISSING",
+      "category": "PERFORMANCE",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "CORRELATION_VARIANCE_ZERO",
+      "category": "PERFORMANCE",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "STRATEGY_VALIDATION_NOT_COMPLETE",
+      "category": "STRATEGY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "STRATEGY_SAMPLE_INSUFFICIENT",
+      "category": "STRATEGY",
+      "criticality": "CONTROL",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "STRATEGY_EXPECTANCY_UNBOUND_OR_INSUFFICIENT",
+      "category": "STRATEGY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
+    },
+    {
+      "code": "PAPER_EVIDENCE_REQUIRED",
+      "category": "STRATEGY",
+      "criticality": "PRODUCTION_BLOCKING",
+      "fail_action": "DENY_NEW_RISK"
     }
   ]
 }
-

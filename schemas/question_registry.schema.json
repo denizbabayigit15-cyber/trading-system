@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/question_registry.schema.json",
+  "title": "V3 Authoritative Question Registry",
+  "type": "object",
+  "required": ["contract_version", "question_count", "questions"],
+  "properties": {
+    "contract_version": {"const": "3.0.0"},
+    "question_count": {"const": 900},
+    "questions": {
+      "type": "array",
+      "minItems": 900,
+      "maxItems": 900,
+      "items": {
+        "type": "object",
+        "required": ["source_order", "question_id", "question", "layer", "source_status", "family", "family_name_tr", "question_version", "design_status", "normative_requirement_tr", "expected_semantics", "applicability_rule", "criticality", "blocking_gate", "contract_id", "policy_id", "policy_family", "owner_engine_ids", "primary_owner_engine_id", "planned_test_id", "planned_scenario_id", "fail_action", "runtime_status", "implementation_status", "evidence_id", "independent_approval_status", "scope_hash"],
+        "properties": {
+          "source_order": {"type": "integer", "minimum": 1, "maximum": 900},
+          "question_id": {"type": "string", "pattern": "^[A-Z]{2,3}-[0-9]{3}$"},
+          "question": {"type": "string", "minLength": 1},
+          "layer": {"enum": ["V2.2.5_CORE", "V2.3_ADAPTIVE", "V2.3.1_HARDENING"]},
+          "source_status": {"enum": ["MEVCUT_ZORUNLU", "YENİ / ÖNERİLEN", "YENİ / KOŞULLU"]},
+          "family": {"type": "string", "pattern": "^[A-Z]{2,3}$"},
+          "family_name_tr": {"type": "string", "minLength": 1},
+          "question_version": {"const": "3.0.0"},
+          "design_status": {"enum": ["KARAR_BAGLANDI", "KAPSAMA_BAGLI"]},
+          "normative_requirement_tr": {"type": "string", "minLength": 1},
+          "expected_semantics": {"enum": ["CONTROL_REQUIREMENT_SATISFIED", "MUST_BE_NO"]},
+          "applicability_rule": {"enum": ["APPLICABLE_BY_DEFAULT_UNLESS_EVIDENCE_BACKED_NA", "MARKET_PROFILE_OR_SCOPE_EVIDENCE_REQUIRED"]},
+          "criticality": {"enum": ["AUTHORITY_OR_GATE_BLOCKING", "CERTIFICATION_BLOCKING", "CONDITIONAL_BLOCKING"]},
+          "blocking_gate": {"type": "string", "minLength": 1},
+          "contract_id": {"type": "string", "pattern": "^REQ-V3\\.0\\.0-[A-Z]{2,3}-[0-9]{3}$"},
+          "policy_id": {"type": "string", "pattern": "^POL-V3\\.0\\.0-[A-Z]{2,3}-ACTIVE$"},
+          "policy_family": {"type": "string", "minLength": 1},
+          "owner_engine_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "integer", "minimum": 1, "maximum": 112}},
+          "primary_owner_engine_id": {"type": "integer", "minimum": 1, "maximum": 112},
+          "planned_test_id": {"type": "string", "pattern": "^AT-V3\\.0\\.0-[A-Z]{2,3}-[0-9]{3}$"},
+          "planned_scenario_id": {"type": "string", "minLength": 1},
+          "fail_action": {"type": "string", "minLength": 1},
+          "runtime_status": {"const": "UNKNOWN"},
+          "implementation_status": {"const": "NOT_IMPLEMENTED"},
+          "evidence_id": {"type": "null"},
+          "independent_approval_status": {"const": "PENDING"},
+          "scope_hash": {"type": "null"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

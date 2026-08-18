@@ -23,5 +23,16 @@ def test_manifest_tells_the_truth() -> None:
     assert manifest["question_review_workbook_materialized"] is True
     assert manifest["question_review_workbook_question_count"] == 150
     assert manifest["question_review_workbook_prefilled_decision_count"] == 0
-    assert manifest["question_registry_materialized"] is False
+    assert manifest["question_registry_materialized"] is True
+    assert manifest["question_registry_count"] == 900
+    assert manifest["question_relations_materialized"] is True
+    assert manifest["question_relations_count"] == 4
+    assert manifest["question_traceability_matrix_materialized"] is True
+    assert manifest["question_traceability_row_count"] == 900
+    assert manifest["question_acceptance_matrix_materialized"] is True
+    assert manifest["question_acceptance_test_count"] == 900
+    assert manifest["question_result_schema_materialized"] is True
+    assert manifest["owner_acceptance_recorded"] is True
+    assert manifest["framework_implementation_may_start"] is True
+    assert manifest["independent_validation_complete"] is False
     assert manifest["blockers"]

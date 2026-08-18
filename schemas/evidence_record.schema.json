@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/evidence_record.schema.json",
+  "type": "object",
+  "required": ["evidence_id", "kind", "subject_id", "contract_version", "scope_hash", "producer", "observed_at", "payload", "payload_sha256", "immutable"],
+  "properties": {
+    "evidence_id": {"type": "string", "minLength": 1},
+    "kind": {"enum": ["TEST", "OBSERVATION", "APPROVAL", "RECONCILIATION", "OPERATIONAL", "ECONOMIC"]},
+    "subject_id": {"type": "string", "minLength": 1},
+    "contract_version": {"type": "string", "minLength": 1},
+    "scope_hash": {"type": ["string", "null"]},
+    "producer": {"type": "string", "minLength": 1},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "payload": {"type": "object"},
+    "payload_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "immutable": {"const": true}
+  },
+  "additionalProperties": false
+}

@@ -4,7 +4,7 @@
   "package_version": "0.1.0",
   "change_request": "CR-V3.0.0-PRECODE-001",
   "implementation_wave": "W0",
-  "implementation_status": "FOUNDATION_REVIEW_WORKBOOK",
+  "implementation_status": "FOUNDATION_V3_QUESTION_CONTROL_MATERIALIZED",
   "r1_code_ready": false,
   "r2_test_ready": false,
   "r3_operationally_live_ready": false,
@@ -24,14 +24,25 @@
   "question_review_workbook_materialized": true,
   "question_review_workbook_question_count": 150,
   "question_review_workbook_prefilled_decision_count": 0,
-  "question_registry_materialized": false,
+  "question_registry_materialized": true,
   "external_values_status": "UNBOUND_REQUIRED",
   "blockers": [
-    "authoritative owner/policy/test/fail-action question registry was referenced but not present in the supplied baseline files",
-    "150 first-wave questions require explicit scope, criticality, owner, policy, test and fail-action review",
+    "150 first-wave questions still require independent human review, scope binding where applicable, evidence, and runtime execution",
     "question review decision ledger contains zero independently approved decisions and zero adopted questions",
-    "112 full per-engine contracts are not implemented",
+    "112 full per-engine runtime implementations are not implemented",
     "external scope, broker, venue, account, entitlement, capital, fee, threshold and legal values are unbound",
-    "independent validation and owner acceptance evidence are absent"
-  ]
+    "independent validation evidence is absent"
+  ],
+  "question_registry_count": 900,
+  "question_relations_materialized": true,
+  "question_relations_count": 4,
+  "question_traceability_matrix_materialized": true,
+  "question_traceability_row_count": 900,
+  "question_acceptance_matrix_materialized": true,
+  "question_acceptance_test_count": 900,
+  "question_result_schema_materialized": true,
+  "owner_acceptance_recorded": true,
+  "owner_acceptance_change_request": "CR-V3.0.0-PRECODE-001",
+  "framework_implementation_may_start": true,
+  "independent_validation_complete": false
 }

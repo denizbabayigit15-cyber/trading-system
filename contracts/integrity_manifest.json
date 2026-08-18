@@ -49,6 +49,11 @@
       "sha256": "996df3037bf2ae0e03cd2f9c0f7bff1c0cfd9a3c5845b7188f416758aafeb242"
     },
     {
+      "path": "contracts/engine_implementation_coverage.json",
+      "size_bytes": 7596543,
+      "sha256": "8a6fc2b5226d279e355fb3e853e418af38ff2e7d2b100f95290027ddda4ff4f5"
+    },
+    {
       "path": "contracts/engine_registry.json",
       "size_bytes": 29040,
       "sha256": "7eebc68493a9262fc4d8f6e139abac2ae993ba52868d913aae121aedce5f165a"
@@ -65,13 +70,18 @@
     },
     {
       "path": "contracts/manifest.json",
-      "size_bytes": 1756,
-      "sha256": "62674539490c0082459c761d35378b95973f6c5f99e63d24b53ef70dce9e0b04"
+      "size_bytes": 2190,
+      "sha256": "1ce4946af3acd7c06004f8f5d065896c06fee6af671ae9a3f984d202c80aabb3"
     },
     {
       "path": "contracts/policies/fail_closed.json",
       "size_bytes": 708,
       "sha256": "2d78325e4d47b2a9b3bfbbe23b2998a1152db7a2ffb0ea9f040ed987ef1df097"
+    },
+    {
+      "path": "contracts/questions/acceptance_matrix.json",
+      "size_bytes": 625182,
+      "sha256": "7ac7610b4300b3d134e1d0a666deb3e65caff2b87a836c0b4fb57249cf512219"
     },
     {
       "path": "contracts/questions/first_wave_review_queue.json",
@@ -84,6 +94,16 @@
       "sha256": "7b78496dbf66f8f09ef6458635b5d8c6902a722d0bc38ff271ec988d522ea1c8"
     },
     {
+      "path": "contracts/questions/question_registry.json",
+      "size_bytes": 1288517,
+      "sha256": "d41b5f810c87021c93a7ac1a76968a6a1675629c7c45ae9764844914b9c8aed1"
+    },
+    {
+      "path": "contracts/questions/question_relations.json",
+      "size_bytes": 1159,
+      "sha256": "98991d8e19ed6ef24ba9194de09a1d563bd3dbf9569da426a0435ed4f3c77af9"
+    },
+    {
       "path": "contracts/questions/question_review_decision_ledger.json",
       "size_bytes": 562,
       "sha256": "d06ddd254bbfc30c3bd51d2740372eb64c51d1fef170f330f923870a7a068e69"
@@ -94,14 +114,24 @@
       "sha256": "f46c6011b373f6390d1d70125aaa439bcdbef5f026cdee02878829a59a2bb7f1"
     },
     {
+      "path": "contracts/questions/traceability_matrix.json",
+      "size_bytes": 423589,
+      "sha256": "fbd9ee0e089fe6b13fde50cd1656680965b234a5ac763c488b90a08910076109"
+    },
+    {
       "path": "contracts/reason_codes.json",
-      "size_bytes": 1928,
-      "sha256": "20567a9520f8034e24df35470dacc1cb392f4c2151ddba9532e7e7f16d0283f7"
+      "size_bytes": 14792,
+      "sha256": "938efec98533947eb2084c465841c202c72aeea611a0e809f237cb811f3c6110"
     },
     {
       "path": "contracts/state/runtime_state_machine.json",
       "size_bytes": 854,
       "sha256": "17d3e79128b6757226b31575a452bf2f731d590b1f6af487770304667ba3877c"
+    },
+    {
+      "path": "schemas/engine_implementation_coverage.schema.json",
+      "size_bytes": 5259,
+      "sha256": "f0dc99dd2e3994c089ea658e4e5a80b8b47cf78e9104efe46405b770d37df551"
     },
     {
       "path": "schemas/engine_registry.schema.json",
@@ -114,14 +144,39 @@
       "sha256": "df01a3dfcb9a10eb35019d7c1478a9c8832c56e69fa40145825e1f900cd5fc76"
     },
     {
+      "path": "schemas/evidence_record.schema.json",
+      "size_bytes": 947,
+      "sha256": "ae00fd76bcc64f9ec7a23c2498595caa81b6f44657fc10452a41cb1225ce7bbd"
+    },
+    {
       "path": "schemas/manifest.schema.json",
-      "size_bytes": 2497,
-      "sha256": "935028fe800a299c9a9ebe24a7000c688edcda14e06948fa5a50171a100532aa"
+      "size_bytes": 4134,
+      "sha256": "6accac38bf084bb41e007cab8b3c2c17f53ea50e6ef6306cf4b6ac11e26ff389"
+    },
+    {
+      "path": "schemas/question_acceptance_matrix.schema.json",
+      "size_bytes": 1219,
+      "sha256": "f3a191acdc9737af137634d3dc8535dc657668accacbe50e0fd7e470619952f6"
     },
     {
       "path": "schemas/question_catalog_candidate.schema.json",
       "size_bytes": 3781,
       "sha256": "51744a3f523a4a38ab72818f41c957487273e6e347fe83868892a7983408dd60"
+    },
+    {
+      "path": "schemas/question_registry.schema.json",
+      "size_bytes": 3260,
+      "sha256": "2f3c8a6b9a83f2753082e9569ff278f9e175dad5cc04f75623264a0a31e2e570"
+    },
+    {
+      "path": "schemas/question_relations.schema.json",
+      "size_bytes": 870,
+      "sha256": "5f48b1aeb6d82d15a164ed02fa1aecfe14110ccb843fba86e1eca45c5a28d5aa"
+    },
+    {
+      "path": "schemas/question_result.schema.json",
+      "size_bytes": 2858,
+      "sha256": "91f3afcf9859d51bb9784684e16b39907c0bffcbba4b0327b6d0234da964cd69"
     },
     {
       "path": "schemas/question_review_decision_ledger.schema.json",
@@ -137,6 +192,16 @@
       "path": "schemas/question_review_workbook_manifest.schema.json",
       "size_bytes": 1817,
       "sha256": "530789c2382364c270e878447e495cc8dd06454fdfabf8dda0bb59104720aaca"
+    },
+    {
+      "path": "schemas/question_traceability_matrix.schema.json",
+      "size_bytes": 1187,
+      "sha256": "9ce591ad72f9d42b2269814fc156b91fbe202be45477857a37fb2a6f32297903"
+    },
+    {
+      "path": "schemas/reason_codes.schema.json",
+      "size_bytes": 879,
+      "sha256": "653f8e531d1ae2f7d27df242b7a240ef96fc379b9c2618cc2fd549880245d1b6"
     },
     {
       "path": "research/question_review/templates/W0_FIRST_WAVE_QUESTION_REVIEW_WORKBOOK_V0_1_0.xlsx",

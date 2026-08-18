@@ -27,6 +27,7 @@ evidence/*
 !evidence/*.md
 
 # Editors / operating systems
+.codex/
 .idea/
 .DS_Store
 Thumbs.db

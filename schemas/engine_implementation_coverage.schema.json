@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/engine_implementation_coverage.schema.json",
+  "type": "object",
+  "required": ["contract_version", "engine_count", "counts", "external_binding_required", "runtime_evidence_pending", "independent_review_pending", "engines"],
+  "properties": {
+    "contract_version": {"const": "3.0.0"},
+    "engine_count": {"const": 112},
+    "counts": {
+      "type": "object",
+      "required": ["IMPLEMENTED", "PARTIALLY_IMPLEMENTED", "EXTERNAL_INPUT_BLOCKED", "NOT_IMPLEMENTED"],
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "external_binding_required": {"type": "integer", "minimum": 0},
+    "runtime_evidence_pending": {"type": "integer", "minimum": 0},
+    "independent_review_pending": {"type": "integer", "minimum": 0},
+    "engines": {
+      "type": "array", "minItems": 112, "maxItems": 112,
+      "items": {
+        "type": "object",
+        "required": [
+          "engine_id", "engine_name", "authoritative_references", "implementation_modules",
+          "implementation_symbols", "required_contracts", "required_schemas", "required_reason_codes",
+          "test_files", "test_ids", "persistence_dependencies", "external_dependencies",
+          "implementation_status", "software_status", "external_binding_status",
+          "runtime_evidence_status", "independent_review_status", "owned_question_count",
+          "software_requirement_count", "software_requirements_passed", "software_requirements_missing",
+          "requirement_evidence", "checks", "missing_software", "justification"
+        ],
+        "properties": {
+          "engine_id": {"type": "integer", "minimum": 1, "maximum": 112},
+          "engine_name": {"type": "string", "minLength": 1},
+          "authoritative_references": {"type": "array", "items": {"type": "object"}},
+          "implementation_modules": {"type": "array", "items": {"type": ["string", "null"]}},
+          "implementation_symbols": {"type": "array", "items": {"type": "string"}},
+          "required_contracts": {"type": "array", "items": {"type": "string"}},
+          "required_schemas": {"type": "array", "items": {"type": "string"}},
+          "required_reason_codes": {"type": "array", "items": {"type": "string"}},
+          "test_files": {"type": "array", "items": {"type": "string"}},
+          "test_ids": {"type": "array", "items": {"type": "string"}},
+          "persistence_dependencies": {"type": "array", "items": {"type": "string"}},
+          "external_dependencies": {"type": "array", "items": {"type": "string"}},
+          "implementation_status": {"enum": ["IMPLEMENTED", "PARTIALLY_IMPLEMENTED", "NOT_IMPLEMENTED"]},
+          "software_status": {"enum": ["IMPLEMENTED", "PARTIALLY_IMPLEMENTED", "NOT_IMPLEMENTED"]},
+          "external_binding_status": {"enum": ["REQUIRED", "NOT_REQUIRED"]},
+          "runtime_evidence_status": {"enum": ["PENDING", "AVAILABLE"]},
+          "independent_review_status": {"enum": ["PENDING", "AVAILABLE", "NOT_APPLICABLE"]},
+          "owned_question_count": {"type": "integer", "minimum": 0},
+          "software_requirement_count": {"type": "integer", "minimum": 0},
+          "software_requirements_passed": {"type": "integer", "minimum": 0},
+          "software_requirements_missing": {"type": "integer", "minimum": 0},
+          "requirement_evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["engine_id", "question_id", "requirement", "normative_requirement",
+                "requirement_class", "implementation_symbols", "test_ids", "contract_references",
+                "evidence_status", "external_dependency", "missing_behavior"],
+              "properties": {
+                "engine_id": {"type": "integer"},
+                "question_id": {"type": "string"},
+                "requirement": {"type": "string"},
+                "normative_requirement": {"type": "string"},
+                "requirement_class": {"enum": ["SOFTWARE_IMPLEMENTABLE", "EXTERNAL_BINDING_REQUIRED", "RUNTIME_EVIDENCE_REQUIRED", "INDEPENDENT_REVIEW_REQUIRED"]},
+                "evidence_obligations": {"type": "array", "items": {"enum": ["RUNTIME_EVIDENCE_REQUIRED", "INDEPENDENT_REVIEW_REQUIRED"]}},
+                "implementation_symbols": {"type": "array", "items": {"type": "string"}},
+                "test_ids": {"type": "array", "items": {"type": "string"}},
+                "test_id": {"type": ["string", "null"]},
+                "contract_references": {"type": "array", "items": {"type": "string"}},
+                "evidence_status": {"enum": ["PASS", "MISSING", "PENDING"]},
+                "external_dependency": {"type": ["string", "null"]},
+                "missing_behavior": {"type": "array", "items": {"type": "string"}}
+              },
+              "additionalProperties": false
+            }
+          },
+          "checks": {"type": "object", "additionalProperties": {"type": "boolean"}},
+          "missing_software": {"type": "array", "items": {"type": "string"}},
+          "justification": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

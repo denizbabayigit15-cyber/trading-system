@@ -1,53 +1,30 @@
-# Question catalog candidate and registry blocker
+# V3.0.0 question control surface
 
-The V3.0.0 baseline references `contracts/questions/question_registry.json` as
-the authoritative 900-question mapping. That JSON artifact was not present in
-the supplied baseline files.
+The authoritative V3.0.0 900-question mapping is now materialized as
+`question_registry.json` under accepted change request `CR-V3.0.0-PRECODE-001`.
 
-`question_catalog_candidate.json` is a deterministic, source-faithful extraction
-of the retained Markdown question bank. It makes all 900 question IDs and texts
-machine-readable, but it is deliberately marked `NON_AUTHORITATIVE_CANDIDATE`.
-It is not an equivalent substitute for the missing owner/policy/test/fail-action
-registry.
+The materialized control surface contains:
 
-`first_wave_review_queue.json` selects the baseline-designated `SV`, `EP`, `MI`,
-`VC`, `CY`, and `OR` families: 25 questions per family, 150 total. It is a
-non-authoritative work queue, not an approval artifact. Every item remains
-`REVIEW_REQUIRED`; every operational mapping remains `UNBOUND`.
+- `question_registry.json` — 900 authoritative design mappings;
+- `question_relations.json` — explicit cross-control/evidence relationships;
+- `traceability_matrix.json` — 900 requirement/policy/test mappings;
+- `acceptance_matrix.json` — 900 planned acceptance records;
+- `schemas/question_result.schema.json` — runtime question-result contract.
 
-`question_review_decision_ledger.json` is the fail-closed change-control ledger
-for those 150 items. It begins with zero decisions. Draft records may remain
-unbound; an `APPROVED` record must have complete mappings, a versioned and
-hashed scope, different owner and approver identities, independent approval,
-and ordered UTC timestamps. Approval still does not mean adoption, execution,
-runtime PASS, or live authority.
+The earlier `question_catalog_candidate.json` remains retained as the deterministic,
+source-faithful W0 extraction artifact. It is not the authoritative owner/policy/test
+mapping. The 150-item first-wave queue and review workbook remain human-review aids.
 
-The Excel template under `research/question_review/templates/` mirrors all 150
-source questions for human data entry. Its editable states are limited to
-`DRAFT` and `READY_FOR_REVIEW`; it cannot record approval or adoption. Copy the
-template before entering real review data.
+Materialization and owner acceptance do not create runtime PASS or live authority.
+Current safety truth remains:
 
-This package therefore records:
-
-- expected questions: 900;
-- candidate records materialized: 900 (237 binding-core source records + 663 proposed records);
-- first-wave review items materialized: 150; approved/adopted: 0;
-- review decisions materialized: 0; independently approved/adopted: 0;
+- authoritative design questions: 900;
 - runtime PASS: 0;
-- runtime UNKNOWN/NOT_EXECUTED: 900;
-- scope/criticality/owner/policy/test/fail-action bindings: UNBOUND;
-- authoritative machine registry materialized: false;
-- R1 impact: blocking.
+- runtime status: UNKNOWN;
+- implementation status: NOT_IMPLEMENTED;
+- independent approval: PENDING;
+- R1 CODE_READY: false;
+- LIVE_AUTHORIZED: false.
 
-Do not generate owner, policy, legal applicability, or fail-action mappings by
-guessing. Restore the authoritative artifact or open change control.
-
-Regenerate and verify the candidate deterministically with:
-
-```bash
-uv run python scripts/generate_question_catalog.py
-uv run python scripts/generate_question_catalog.py --check
-uv run python scripts/generate_question_review_queue.py --check
-uv run python scripts/validate_question_review_decisions.py
-uv run python scripts/validate_question_review_workbook.py
-```
+External scope, broker, venue, account, entitlement, capital, fee, threshold and
+legal values must not be invented. Missing required evidence remains fail-closed.
