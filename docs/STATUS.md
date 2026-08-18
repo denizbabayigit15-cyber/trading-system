@@ -15,6 +15,7 @@ It does not claim that the V3.0.0 design package has reached R1.
 | 900-question candidate catalog | MATERIALIZED, NOT EXECUTED | Deterministic extraction; 900 UNKNOWN/NOT_EXECUTED records |
 | Authoritative question bindings | BLOCKED | Owner/policy/test/fail-action source JSON was not present |
 | First-wave question review | QUEUED, 0 APPROVED | SV/EP/MI/VC/CY/OR; 150 REVIEW_REQUIRED records |
+| Review decision gate | CONFIGURED, 0 DECISIONS | Independent approval required; 0 adopted; 0 runtime PASS |
 | GitHub CI quality gates | CONFIGURED, HOSTED RUN REQUIRED | Immutable action pins and read-only permissions |
 | Strategies | DISABLED RESEARCH CANDIDATES | No executable strategy code |
 | R1 CODE_READY | FALSE | Required engine contracts and evidence are incomplete |
@@ -22,6 +23,8 @@ It does not claim that the V3.0.0 design package has reached R1.
 | R3/R4 | FALSE | External and empirical evidence absent |
 | LIVE_AUTHORIZED | FALSE | Application invariant and database constraint |
 
-The next W0 step is reviewed scope/criticality assignment under change control;
-the authoritative registry remains blocking. W1 identity, scope, security,
-temporal truth, and lineage work follows accepted W0 contracts.
+The next W0 step is supplying real scope, criticality, ownership, policy, test,
+evidence, observation-window, and fail-action decisions under change control.
+The authoritative registry remains blocking. An approved review decision is
+still not adoption, runtime evidence, or live authority. W1 identity, scope,
+security, temporal truth, and lineage work follows accepted W0 contracts.

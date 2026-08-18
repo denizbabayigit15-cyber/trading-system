@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/question_review_decision_ledger.schema.json",
+  "title": "Trading System W0 Question Review Decision Ledger",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "contract_version",
+    "ledger_version",
+    "ledger_id",
+    "authority_status",
+    "source_queue_path",
+    "source_queue_sha256",
+    "expected_question_count",
+    "decision_count",
+    "draft_count",
+    "approved_count",
+    "adopted_count",
+    "runtime_pass_count",
+    "live_authorized",
+    "decisions"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "contract_version": {"const": "3.0.0"},
+    "ledger_version": {"const": "0.1.0"},
+    "ledger_id": {"const": "W0-QUESTION-REVIEW-DECISIONS"},
+    "authority_status": {"const": "NON_AUTHORITATIVE_DECISION_LEDGER"},
+    "source_queue_path": {
+      "const": "contracts/questions/first_wave_review_queue.json"
+    },
+    "source_queue_sha256": {
+      "const": "c2b36a809ffacb7a8299397771d678e1d6d77ff0f6f8608c48fe3bad8e7df057"
+    },
+    "expected_question_count": {"const": 150},
+    "decision_count": {"type": "integer", "minimum": 0, "maximum": 150},
+    "draft_count": {"type": "integer", "minimum": 0, "maximum": 150},
+    "approved_count": {"type": "integer", "minimum": 0, "maximum": 150},
+    "adopted_count": {"const": 0},
+    "runtime_pass_count": {"const": 0},
+    "live_authorized": {"const": false},
+    "decisions": {
+      "type": "array",
+      "maxItems": 150,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/decision"}
+    }
+  },
+  "$defs": {
+    "decision": {
+      "type": "object",
+      "required": [
+        "decision_id",
+        "question_id",
+        "queue_version",
+        "decision_status",
+        "change_request_id",
+        "question_version",
+        "scope_hash",
+        "applicability",
+        "criticality",
+        "information_class",
+        "evidence_id",
+        "contract_id",
+        "policy_id",
+        "test_id",
+        "scenario_id",
+        "observation_window",
+        "fail_action",
+        "recertification_status",
+        "owner_id",
+        "approver_id",
+        "independent_approval_status",
+        "submitted_at",
+        "approved_at",
+        "adoption_status",
+        "answer_status",
+        "execution_status",
+        "live_authorized"
+      ],
+      "properties": {
+        "decision_id": {"type": "string", "pattern": "^qrd_[0-9a-f]{32}$"},
+        "question_id": {
+          "type": "string",
+          "pattern": "^(SV|EP|MI|VC|CY|OR)-[0-9]{3}$"
+        },
+        "queue_version": {"const": "0.1.0"},
+        "decision_status": {"enum": ["DRAFT", "APPROVED"]},
+        "change_request_id": {"type": "string", "minLength": 1},
+        "question_version": {"type": "string", "minLength": 1},
+        "scope_hash": {"type": "string", "minLength": 1},
+        "applicability": {"enum": ["UNBOUND", "APPLICABLE", "NOT_APPLICABLE"]},
+        "criticality": {
+          "enum": [
+            "UNBOUND",
+            "PRODUCTION_BLOCKING",
+            "CONDITIONAL_BLOCKING",
+            "ADVISORY"
+          ]
+        },
+        "information_class": {
+          "enum": [
+            "OBSERVED",
+            "DERIVED",
+            "INFERRED",
+            "VENDOR_MODEL",
+            "UNKNOWN",
+            "UNAVAILABLE"
+          ]
+        },
+        "evidence_id": {"type": "string", "minLength": 1},
+        "contract_id": {"type": "string", "minLength": 1},
+        "policy_id": {"type": "string", "minLength": 1},
+        "test_id": {"type": "string", "minLength": 1},
+        "scenario_id": {"type": "string", "minLength": 1},
+        "observation_window": {"type": "string", "minLength": 1},
+        "fail_action": {"type": "string", "minLength": 1},
+        "recertification_status": {"type": "string", "minLength": 1},
+        "owner_id": {"type": "string", "minLength": 1},
+        "approver_id": {"type": "string", "minLength": 1},
+        "independent_approval_status": {"enum": ["NOT_EXECUTED", "APPROVED"]},
+        "submitted_at": {"type": "string", "format": "date-time"},
+        "approved_at": {
+          "oneOf": [
+            {"type": "string", "format": "date-time"},
+            {"type": "null"}
+          ]
+        },
+        "adoption_status": {"const": "NOT_ADOPTED"},
+        "answer_status": {"const": "UNKNOWN"},
+        "execution_status": {"const": "NOT_EXECUTED"},
+        "live_authorized": {"const": false}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"decision_status": {"const": "DRAFT"}}},
+          "then": {
+            "properties": {
+              "independent_approval_status": {"const": "NOT_EXECUTED"},
+              "approved_at": {"type": "null"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"decision_status": {"const": "APPROVED"}}},
+          "then": {
+            "properties": {
+              "independent_approval_status": {"const": "APPROVED"},
+              "approved_at": {"type": "string", "format": "date-time"},
+              "change_request_id": {"not": {"const": "UNBOUND"}},
+              "question_version": {"pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+              "scope_hash": {"pattern": "^[0-9a-f]{64}$"},
+              "applicability": {"enum": ["APPLICABLE", "NOT_APPLICABLE"]},
+              "criticality": {
+                "enum": ["PRODUCTION_BLOCKING", "CONDITIONAL_BLOCKING", "ADVISORY"]
+              },
+              "evidence_id": {"not": {"const": "UNBOUND"}},
+              "contract_id": {"not": {"const": "UNBOUND"}},
+              "policy_id": {"not": {"const": "UNBOUND"}},
+              "test_id": {"not": {"const": "UNBOUND"}},
+              "scenario_id": {"not": {"const": "UNBOUND"}},
+              "observation_window": {"not": {"const": "UNBOUND"}},
+              "fail_action": {"not": {"const": "UNBOUND"}},
+              "recertification_status": {"not": {"const": "UNBOUND"}},
+              "owner_id": {"not": {"const": "UNBOUND"}},
+              "approver_id": {"not": {"const": "UNBOUND"}}
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

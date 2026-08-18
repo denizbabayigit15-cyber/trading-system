@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "3.0.0",
+  "ledger_version": "0.1.0",
+  "ledger_id": "W0-QUESTION-REVIEW-DECISIONS",
+  "authority_status": "NON_AUTHORITATIVE_DECISION_LEDGER",
+  "source_queue_path": "contracts/questions/first_wave_review_queue.json",
+  "source_queue_sha256": "c2b36a809ffacb7a8299397771d678e1d6d77ff0f6f8608c48fe3bad8e7df057",
+  "expected_question_count": 150,
+  "decision_count": 0,
+  "draft_count": 0,
+  "approved_count": 0,
+  "adopted_count": 0,
+  "runtime_pass_count": 0,
+  "live_authorized": false,
+  "decisions": []
+}

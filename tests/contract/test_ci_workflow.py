@@ -44,6 +44,7 @@ def test_ci_executes_every_local_quality_gate_with_frozen_runs() -> None:
     assert "uv sync --locked --all-groups" in commands
     assert "uv run --frozen python scripts/generate_question_catalog.py --check" in commands
     assert "uv run --frozen python scripts/generate_question_review_queue.py --check" in commands
+    assert "uv run --frozen python scripts/validate_question_review_decisions.py" in commands
     assert "uv run --frozen python scripts/verify_contracts.py" in commands
     assert "uv run --frozen pytest" in commands
     assert "uv run --frozen ruff check ." in commands
