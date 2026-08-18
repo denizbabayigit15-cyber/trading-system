@@ -10,10 +10,16 @@ machine-readable, but it is deliberately marked `NON_AUTHORITATIVE_CANDIDATE`.
 It is not an equivalent substitute for the missing owner/policy/test/fail-action
 registry.
 
+`first_wave_review_queue.json` selects the baseline-designated `SV`, `EP`, `MI`,
+`VC`, `CY`, and `OR` families: 25 questions per family, 150 total. It is a
+non-authoritative work queue, not an approval artifact. Every item remains
+`REVIEW_REQUIRED`; every operational mapping remains `UNBOUND`.
+
 This package therefore records:
 
 - expected questions: 900;
 - candidate records materialized: 900 (237 binding-core source records + 663 proposed records);
+- first-wave review items materialized: 150; approved/adopted: 0;
 - runtime PASS: 0;
 - runtime UNKNOWN/NOT_EXECUTED: 900;
 - scope/criticality/owner/policy/test/fail-action bindings: UNBOUND;
@@ -28,4 +34,5 @@ Regenerate and verify the candidate deterministically with:
 ```bash
 uv run python scripts/generate_question_catalog.py
 uv run python scripts/generate_question_catalog.py --check
+uv run python scripts/generate_question_review_queue.py --check
 ```

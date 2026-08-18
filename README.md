@@ -15,6 +15,8 @@ profitability claim, or live-trading release.
 | pgAdmin | 9.17 |
 | Engine catalog | 112 entries; all `NOT_IMPLEMENTED` |
 | Question catalog | 900 source-faithful candidates; all `UNKNOWN / NOT_EXECUTED` |
+| First-wave review | 150 queued; all `REVIEW_REQUIRED / UNBOUND` |
+| Pull-request gates | GitHub CI: contracts, tests, Ruff, formatting, and Mypy |
 | Runtime tests | Only scaffold tests included |
 | R1 code-ready | `FALSE` |
 | Live authorized | `FALSE` and database-constrained |
@@ -25,6 +27,7 @@ profitability claim, or live-trading release.
 uv sync --all-groups
 uv run python scripts/generate_local_env.py
 uv run python scripts/generate_question_catalog.py --check
+uv run python scripts/generate_question_review_queue.py --check
 docker compose up -d
 uv run alembic upgrade head
 uv run python scripts/verify_contracts.py
@@ -58,6 +61,7 @@ the WSL host, the PostgreSQL host is `127.0.0.1`.
 - `docs/runbooks/LOCAL_DEVELOPMENT.md` — detailed local operation.
 - `contracts/engine_registry.json` — the 112-engine catalog, not implementation evidence.
 - `contracts/questions/question_catalog_candidate.json` — deterministic 900-question extraction.
+- `contracts/questions/first_wave_review_queue.json` — fail-closed 150-item review queue.
 - `contracts/questions/README.md` — explicit blocker for the missing authoritative mappings.
 
 ## Developer completion statement

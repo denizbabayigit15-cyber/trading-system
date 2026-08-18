@@ -11,6 +11,7 @@ from trading_system.core.ids import new_id
 from trading_system.core.time import require_utc, utc_now
 
 QUESTION_BANK_SHA256 = "87fdc3e6de9a9e5b76fe470faa310ed57a9392cf7d5ecfd3f672149bc35a5544"
+QUESTION_CATALOG_SHA256 = "7b78496dbf66f8f09ef6458635b5d8c6902a722d0bc38ff271ec988d522ea1c8"
 
 type QuestionSourceLayer = Literal[
     "V2.2.5_BINDING_CORE",
@@ -21,6 +22,8 @@ type QuestionSourceStatus = Literal[
     "YENİ / ÖNERİLEN",
     "YENİ / KOŞULLU",
 ]
+type ProposedQuestionSourceStatus = Literal["YENİ / ÖNERİLEN", "YENİ / KOŞULLU"]
+type FirstWaveQuestionFamily = Literal["SV", "EP", "MI", "VC", "CY", "OR"]
 
 
 class EngineRecord(BaseModel):
@@ -137,6 +140,103 @@ class QuestionCatalogCandidate(BaseModel):
             raise ValueError("expected 596 proposed extension records")
         if proposed_statuses.count("YENİ / KOŞULLU") != 67:
             raise ValueError("expected 67 conditional extension records")
+        return self
+
+
+class QuestionReviewQueueItem(BaseModel):
+    """A first-wave question awaiting explicit human and change-control review."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    review_ordinal: int = Field(ge=1, le=150)
+    catalog_ordinal: int = Field(ge=688, le=837)
+    question_id: str = Field(pattern=r"^(SV|EP|MI|VC|CY|OR)-[0-9]{3}$")
+    family: FirstWaveQuestionFamily
+    question_version: Literal["UNBOUND"]
+    source_section: str = Field(min_length=1)
+    question_text: str = Field(min_length=1)
+    source_status: ProposedQuestionSourceStatus
+    review_status: Literal["REVIEW_REQUIRED"]
+    applicability: Literal["UNBOUND"]
+    criticality: Literal["UNBOUND"]
+    scope_hash: Literal["UNBOUND"]
+    information_class: Literal["UNKNOWN"]
+    answer_status: Literal["UNKNOWN"]
+    execution_status: Literal["NOT_EXECUTED"]
+    contract_id: Literal["UNBOUND"]
+    policy_id: Literal["UNBOUND"]
+    test_id: Literal["UNBOUND"]
+    scenario_id: Literal["UNBOUND"]
+    evidence_id: Literal["UNBOUND"]
+    observation_window: Literal["UNBOUND"]
+    fail_action: Literal["UNBOUND"]
+    owner: Literal["UNBOUND"]
+    approver: Literal["UNBOUND"]
+    independent_approval_status: Literal["NOT_EXECUTED"]
+    decision_record_id: Literal["UNBOUND"]
+    recertification_status: Literal["NOT_EXECUTED"]
+
+
+class QuestionReviewQueue(BaseModel):
+    """Fail-closed review queue for the baseline-designated first wave."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    schema_version: Literal["1.0.0"]
+    contract_version: Literal["3.0.0"]
+    queue_version: Literal["0.1.0"]
+    queue_id: Literal["W0-FIRST-WAVE-QUESTION-REVIEW"]
+    authority_status: Literal["NON_AUTHORITATIVE_REVIEW_QUEUE"]
+    source_catalog_path: Literal["contracts/questions/question_catalog_candidate.json"]
+    source_catalog_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    family_order: tuple[FirstWaveQuestionFamily, ...]
+    expected_count: Literal[150]
+    review_required_count: Literal[150]
+    approved_count: Literal[0]
+    adopted_count: Literal[0]
+    runtime_pass_count: Literal[0]
+    live_authorized: Literal[False]
+    items: tuple[QuestionReviewQueueItem, ...]
+
+    @model_validator(mode="after")
+    def validate_complete_review_queue(self) -> Self:
+        expected_families: tuple[FirstWaveQuestionFamily, ...] = (
+            "SV",
+            "EP",
+            "MI",
+            "VC",
+            "CY",
+            "OR",
+        )
+        if self.source_catalog_sha256 != QUESTION_CATALOG_SHA256:
+            raise ValueError("review queue source catalog hash is not the reviewed catalog hash")
+        if self.family_order != expected_families:
+            raise ValueError("first-wave family order must be SV, EP, MI, VC, CY, OR")
+        if len(self.items) != self.expected_count:
+            raise ValueError("first-wave review queue must contain exactly 150 items")
+
+        review_ordinals = [item.review_ordinal for item in self.items]
+        if review_ordinals != list(range(1, 151)):
+            raise ValueError("review queue must contain ordered ordinals 1..150")
+
+        catalog_ordinals = [item.catalog_ordinal for item in self.items]
+        if catalog_ordinals != list(range(688, 838)):
+            raise ValueError("review queue must preserve source catalog ordinals 688..837")
+
+        expected_ids = [
+            f"{family}-{number:03d}" for family in expected_families for number in range(1, 26)
+        ]
+        actual_ids = [item.question_id for item in self.items]
+        if actual_ids != expected_ids:
+            raise ValueError("review queue must contain ordered IDs 001..025 for each family")
+        if any(item.family != item.question_id.split("-", maxsplit=1)[0] for item in self.items):
+            raise ValueError("question family must match its question ID")
+
+        statuses = [item.source_status for item in self.items]
+        if statuses.count("YENİ / ÖNERİLEN") != 132:
+            raise ValueError("expected 132 proposed first-wave questions")
+        if statuses.count("YENİ / KOŞULLU") != 18:
+            raise ValueError("expected 18 conditional first-wave questions")
         return self
 
 

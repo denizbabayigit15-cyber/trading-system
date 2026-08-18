@@ -5,7 +5,11 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from trading_system.contracts.models import EngineRegistry, QuestionCatalogCandidate
+from trading_system.contracts.models import (
+    EngineRegistry,
+    QuestionCatalogCandidate,
+    QuestionReviewQueue,
+)
 
 
 def repository_root() -> Path:
@@ -33,4 +37,11 @@ def load_engine_registry() -> EngineRegistry:
 def load_question_catalog_candidate() -> QuestionCatalogCandidate:
     return QuestionCatalogCandidate.model_validate(
         load_json("contracts/questions/question_catalog_candidate.json")
+    )
+
+
+@lru_cache(maxsize=1)
+def load_question_review_queue() -> QuestionReviewQueue:
+    return QuestionReviewQueue.model_validate(
+        load_json("contracts/questions/first_wave_review_queue.json")
     )

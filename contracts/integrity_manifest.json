@@ -65,13 +65,18 @@
     },
     {
       "path": "contracts/manifest.json",
-      "size_bytes": 1039,
-      "sha256": "2eb637e2b235d2005356a7a5778946635fb58852e2e0f7a5c246de13d0df41f3"
+      "size_bytes": 1304,
+      "sha256": "740325035fcfa7c2f96127a688e1b926b0ab3ea655bd985ff98ecfd63a1e3a7a"
     },
     {
       "path": "contracts/policies/fail_closed.json",
       "size_bytes": 708,
       "sha256": "2d78325e4d47b2a9b3bfbbe23b2998a1152db7a2ffb0ea9f040ed987ef1df097"
+    },
+    {
+      "path": "contracts/questions/first_wave_review_queue.json",
+      "size_bytes": 164812,
+      "sha256": "c2b36a809ffacb7a8299397771d678e1d6d77ff0f6f8608c48fe3bad8e7df057"
     },
     {
       "path": "contracts/questions/question_catalog_candidate.json",
@@ -100,13 +105,18 @@
     },
     {
       "path": "schemas/manifest.schema.json",
-      "size_bytes": 1384,
-      "sha256": "002c5dffbde7aad3fc7bc28f61e7be9f5bb1e73d21c197c25beacd4adb3c4618"
+      "size_bytes": 1727,
+      "sha256": "f09055edd5d080a5ccb373e79d6e55f4e8e44f32289a0919d293eb944b90dff5"
     },
     {
       "path": "schemas/question_catalog_candidate.schema.json",
       "size_bytes": 3781,
       "sha256": "51744a3f523a4a38ab72818f41c957487273e6e347fe83868892a7983408dd60"
+    },
+    {
+      "path": "schemas/question_review_queue.schema.json",
+      "size_bytes": 4149,
+      "sha256": "958898cf1cd61dd10a3055467c8cd6565c6cc7e23550f08c5081d71ef8e22e05"
     }
   ]
 }
