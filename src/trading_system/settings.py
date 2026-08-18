@@ -19,6 +19,11 @@ class Settings(BaseSettings):
 
     app_env: Literal["development", "test", "staging", "production"] = "development"
     live_trading_enabled: bool = False
+    ibkr_host: str = "127.0.0.1"
+    ibkr_port: int = Field(default=7497, ge=1, le=65535)
+    ibkr_client_id: int = Field(default=91, ge=0)
+    ibkr_account_id: str | None = None
+    ibkr_paper_only: bool = True
 
     postgres_host: str = "127.0.0.1"
     postgres_port: int = Field(default=5432, ge=1, le=65535)
@@ -30,6 +35,8 @@ class Settings(BaseSettings):
     def enforce_scaffold_authority_lock(self) -> Self:
         if self.live_trading_enabled:
             raise ValueError("package 0.1.0 hard-locks LIVE_TRADING_ENABLED=false")
+        if not self.ibkr_paper_only:
+            raise ValueError("IBKR integration is paper-only until independently authorized")
         return self
 
     @property
