@@ -47,7 +47,10 @@ Within this repository you may autonomously:
 - fix failures and continue iterating until the relevant validation suite is green;
 - refactor code when required to satisfy contracts and maintainability;
 - update implementation documentation and status files to accurately reflect reality;
-- create local Git commits when useful.
+- create local Git commits when useful;
+- perform normal non-destructive remote GitHub operations on feature branches, including
+  `git push`, pull-request creation/update, CI monitoring, merge after all required checks
+  are green, remote/local feature-branch cleanup, and fast-forward updates to `main`.
 
 Do not repeatedly ask the user for routine engineering decisions. Infer the safest contract-compliant implementation and continue.
 
@@ -66,8 +69,6 @@ Never autonomously:
 - expose, print, commit, log, or transmit secrets unnecessarily;
 - fabricate an API credential or external entitlement;
 - bypass an explicit safety control merely to make tests pass;
-- push to a remote Git repository;
-- merge a pull request;
 - force-push;
 - run destructive Git history operations such as `git reset --hard` on user work;
 - delete user work merely because it is inconvenient.
