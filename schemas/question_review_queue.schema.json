@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/question_review_queue.schema.json",
+  "title": "Trading System W0 First-Wave Question Review Queue",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "contract_version",
+    "queue_version",
+    "queue_id",
+    "authority_status",
+    "source_catalog_path",
+    "source_catalog_sha256",
+    "family_order",
+    "expected_count",
+    "review_required_count",
+    "approved_count",
+    "adopted_count",
+    "runtime_pass_count",
+    "live_authorized",
+    "items"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "contract_version": {"const": "3.0.0"},
+    "queue_version": {"const": "0.1.0"},
+    "queue_id": {"const": "W0-FIRST-WAVE-QUESTION-REVIEW"},
+    "authority_status": {"const": "NON_AUTHORITATIVE_REVIEW_QUEUE"},
+    "source_catalog_path": {
+      "const": "contracts/questions/question_catalog_candidate.json"
+    },
+    "source_catalog_sha256": {
+      "const": "7b78496dbf66f8f09ef6458635b5d8c6902a722d0bc38ff271ec988d522ea1c8"
+    },
+    "family_order": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "SV"},
+        {"const": "EP"},
+        {"const": "MI"},
+        {"const": "VC"},
+        {"const": "CY"},
+        {"const": "OR"}
+      ],
+      "items": false,
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "expected_count": {"const": 150},
+    "review_required_count": {"const": 150},
+    "approved_count": {"const": 0},
+    "adopted_count": {"const": 0},
+    "runtime_pass_count": {"const": 0},
+    "live_authorized": {"const": false},
+    "items": {
+      "type": "array",
+      "minItems": 150,
+      "maxItems": 150,
+      "items": {"$ref": "#/$defs/review_item"}
+    }
+  },
+  "$defs": {
+    "review_item": {
+      "type": "object",
+      "required": [
+        "review_ordinal",
+        "catalog_ordinal",
+        "question_id",
+        "family",
+        "question_version",
+        "source_section",
+        "question_text",
+        "source_status",
+        "review_status",
+        "applicability",
+        "criticality",
+        "scope_hash",
+        "information_class",
+        "answer_status",
+        "execution_status",
+        "contract_id",
+        "policy_id",
+        "test_id",
+        "scenario_id",
+        "evidence_id",
+        "observation_window",
+        "fail_action",
+        "owner",
+        "approver",
+        "independent_approval_status",
+        "decision_record_id",
+        "recertification_status"
+      ],
+      "properties": {
+        "review_ordinal": {"type": "integer", "minimum": 1, "maximum": 150},
+        "catalog_ordinal": {"type": "integer", "minimum": 688, "maximum": 837},
+        "question_id": {
+          "type": "string",
+          "pattern": "^(SV|EP|MI|VC|CY|OR)-[0-9]{3}$"
+        },
+        "family": {"enum": ["SV", "EP", "MI", "VC", "CY", "OR"]},
+        "question_version": {"const": "UNBOUND"},
+        "source_section": {"type": "string", "minLength": 1},
+        "question_text": {"type": "string", "minLength": 1},
+        "source_status": {"enum": ["YENİ / ÖNERİLEN", "YENİ / KOŞULLU"]},
+        "review_status": {"const": "REVIEW_REQUIRED"},
+        "applicability": {"const": "UNBOUND"},
+        "criticality": {"const": "UNBOUND"},
+        "scope_hash": {"const": "UNBOUND"},
+        "information_class": {"const": "UNKNOWN"},
+        "answer_status": {"const": "UNKNOWN"},
+        "execution_status": {"const": "NOT_EXECUTED"},
+        "contract_id": {"const": "UNBOUND"},
+        "policy_id": {"const": "UNBOUND"},
+        "test_id": {"const": "UNBOUND"},
+        "scenario_id": {"const": "UNBOUND"},
+        "evidence_id": {"const": "UNBOUND"},
+        "observation_window": {"const": "UNBOUND"},
+        "fail_action": {"const": "UNBOUND"},
+        "owner": {"const": "UNBOUND"},
+        "approver": {"const": "UNBOUND"},
+        "independent_approval_status": {"const": "NOT_EXECUTED"},
+        "decision_record_id": {"const": "UNBOUND"},
+        "recertification_status": {"const": "NOT_EXECUTED"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
