@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/question_acceptance_matrix.schema.json",
+  "type": "object",
+  "required": ["contract_version", "test_count", "tests"],
+  "properties": {
+    "contract_version": {"const": "3.0.0"},
+    "test_count": {"const": 900},
+    "tests": {"type": "array", "minItems": 900, "maxItems": 900, "items": {"type": "object", "required": ["test_id", "question_id", "requirement_id", "policy_id", "test_classes", "positive_path_tr", "negative_path_tr", "pass_evidence_required", "implementation_status"], "properties": {"test_id": {"type": "string"}, "question_id": {"type": "string"}, "requirement_id": {"type": "string"}, "policy_id": {"type": "string"}, "test_classes": {"type": "array", "minItems": 6, "uniqueItems": true, "items": {"enum": ["contract", "unit_or_property", "integration", "negative_or_failure", "replay", "lineage"]}}, "positive_path_tr": {"type": "string", "minLength": 1}, "negative_path_tr": {"type": "string", "minLength": 1}, "pass_evidence_required": {"const": true}, "implementation_status": {"const": "PLANNED_NOT_EXECUTED"}}, "additionalProperties": false}}
+  },
+  "additionalProperties": false
+}

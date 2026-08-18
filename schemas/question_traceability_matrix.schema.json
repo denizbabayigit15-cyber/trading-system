@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.trading-system/schemas/question_traceability_matrix.schema.json",
+  "type": "object",
+  "required": ["contract_version", "row_count", "rows"],
+  "properties": {
+    "contract_version": {"const": "3.0.0"},
+    "row_count": {"const": 900},
+    "rows": {"type": "array", "minItems": 900, "maxItems": 900, "items": {"type": "object", "required": ["question_id", "requirement_id", "policy_id", "owner_engine_ids", "primary_owner_engine_id", "test_id", "scenario_id", "evidence_id", "scope_hash", "status"], "properties": {"question_id": {"type": "string"}, "requirement_id": {"type": "string"}, "policy_id": {"type": "string"}, "owner_engine_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "integer", "minimum": 1, "maximum": 112}}, "primary_owner_engine_id": {"type": "integer", "minimum": 1, "maximum": 112}, "test_id": {"type": "string"}, "scenario_id": {"type": "string"}, "evidence_id": {"type": "null"}, "scope_hash": {"type": "null"}, "status": {"const": "DESIGN_MAPPED_IMPLEMENTATION_PENDING"}}, "additionalProperties": false}}
+  },
+  "additionalProperties": false
+}

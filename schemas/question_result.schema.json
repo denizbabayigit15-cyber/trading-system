@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "question_result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "question_id",
+    "question_version",
+    "scope_hash",
+    "applicability",
+    "criticality",
+    "status",
+    "information_class",
+    "contract_id",
+    "policy_id",
+    "test_id",
+    "fail_action"
+  ],
+  "properties": {
+    "question_id": {
+      "type": "string"
+    },
+    "question_version": {
+      "type": "string"
+    },
+    "scope_hash": {
+      "type": "string"
+    },
+    "applicability": {
+      "enum": [
+        "APPLICABLE",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "criticality": {
+      "enum": [
+        "AUTHORITY_OR_GATE_BLOCKING",
+        "CERTIFICATION_BLOCKING",
+        "CONDITIONAL_BLOCKING"
+      ]
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNKNOWN",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "information_class": {
+      "enum": [
+        "OBSERVED",
+        "DERIVED",
+        "INFERRED",
+        "VENDOR_MODEL",
+        "UNKNOWN",
+        "UNAVAILABLE"
+      ]
+    },
+    "contract_id": {
+      "type": "string"
+    },
+    "policy_id": {
+      "type": "string"
+    },
+    "test_id": {
+      "type": "string"
+    },
+    "scenario_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fail_action": {
+      "type": "string"
+    },
+    "producer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approver": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "independent_approval_status": {
+      "enum": [
+        "PENDING",
+        "APPROVED",
+        "NOT_REQUIRED"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "PASS"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "evidence_id"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "applicability": {
+            "const": "NOT_APPLICABLE"
+          }
+        },
+        "required": [
+          "applicability"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "NOT_APPLICABLE"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "NOT_APPLICABLE"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "applicability": {
+            "const": "NOT_APPLICABLE"
+          }
+        }
+      }
+    }
+  ]
+}

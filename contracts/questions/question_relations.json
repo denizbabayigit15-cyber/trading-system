@@ -1,0 +1,38 @@
+{
+  "contract_version": "3.0.0",
+  "relations": [
+    {
+      "question_ids": [
+        "AL-012",
+        "CP-001"
+      ],
+      "relation": "INTENTIONAL_CROSS_CONTROL",
+      "rule_tr": "Aynı kapasite gerçeğini alfa ve kapasite sahipleri ayrı denetler; aynı kanıt bağımsız iki doğrulama sayılmaz."
+    },
+    {
+      "question_ids": [
+        "AL-010",
+        "EV-012"
+      ],
+      "relation": "NESTED_REQUIREMENT",
+      "rule_tr": "Genel alfa belirsizliği ile EV belirsizliği ayrıdır; kanıt bağımlılığı açıkça işaretlenir."
+    },
+    {
+      "question_ids": [
+        "PB-008",
+        "DR-003"
+      ],
+      "relation": "NESTED_REQUIREMENT",
+      "rule_tr": "Olasılık drift'i ile kalibrasyon drift'i aynı kökten gelebilir; bağımsız kanıt sayılmaz."
+    },
+    {
+      "question_ids": [
+        "RK-009",
+        "PX-008"
+      ],
+      "relation": "DEFENSE_IN_DEPTH",
+      "rule_tr": "Gap riski risk modeli ve pozisyon/çıkış yolu tarafından ayrı kontrol edilir."
+    }
+  ],
+  "evidence_independence_rule": "Shared/dependent evidence may be referenced but cannot increase independent-confirmation count."
+}

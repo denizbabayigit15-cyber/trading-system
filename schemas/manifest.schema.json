@@ -24,34 +24,137 @@
     "question_review_workbook_materialized",
     "question_review_workbook_question_count",
     "question_review_workbook_prefilled_decision_count",
-    "question_registry_materialized"
+    "question_registry_materialized",
+    "question_registry_count",
+    "question_relations_materialized",
+    "question_relations_count",
+    "question_traceability_matrix_materialized",
+    "question_traceability_row_count",
+    "question_acceptance_matrix_materialized",
+    "question_acceptance_test_count",
+    "question_result_schema_materialized",
+    "owner_acceptance_recorded",
+    "owner_acceptance_change_request",
+    "framework_implementation_may_start",
+    "independent_validation_complete"
   ],
   "properties": {
-    "schema_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
-    "contract_version": {"const": "3.0.0"},
-    "package_version": {"type": "string"},
-    "implementation_wave": {"const": "W0"},
-    "r1_code_ready": {"const": false},
-    "r2_test_ready": {"const": false},
-    "r3_operationally_live_ready": {"const": false},
-    "r4_profitability_certified": {"const": false},
-    "live_authorized": {"const": false},
-    "engine_count_expected": {"const": 112},
-    "question_count_expected": {"const": 900},
-    "question_catalog_candidate_materialized": {"const": true},
-    "question_catalog_candidate_count": {"const": 900},
-    "question_first_wave_review_queue_materialized": {"const": true},
-    "question_first_wave_review_queue_count": {"const": 150},
-    "question_first_wave_review_approved_count": {"const": 0},
-    "question_review_decision_ledger_materialized": {"const": true},
-    "question_review_decision_count": {"const": 0},
-    "question_review_decision_approved_count": {"const": 0},
-    "question_review_decision_adopted_count": {"const": 0},
-    "question_review_workbook_materialized": {"const": true},
-    "question_review_workbook_question_count": {"const": 150},
-    "question_review_workbook_prefilled_decision_count": {"const": 0},
-    "question_registry_materialized": {"const": false},
-    "blockers": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "contract_version": {
+      "const": "3.0.0"
+    },
+    "package_version": {
+      "type": "string"
+    },
+    "implementation_wave": {
+      "const": "W0"
+    },
+    "r1_code_ready": {
+      "const": false
+    },
+    "r2_test_ready": {
+      "const": false
+    },
+    "r3_operationally_live_ready": {
+      "const": false
+    },
+    "r4_profitability_certified": {
+      "const": false
+    },
+    "live_authorized": {
+      "const": false
+    },
+    "engine_count_expected": {
+      "const": 112
+    },
+    "question_count_expected": {
+      "const": 900
+    },
+    "question_catalog_candidate_materialized": {
+      "const": true
+    },
+    "question_catalog_candidate_count": {
+      "const": 900
+    },
+    "question_first_wave_review_queue_materialized": {
+      "const": true
+    },
+    "question_first_wave_review_queue_count": {
+      "const": 150
+    },
+    "question_first_wave_review_approved_count": {
+      "const": 0
+    },
+    "question_review_decision_ledger_materialized": {
+      "const": true
+    },
+    "question_review_decision_count": {
+      "const": 0
+    },
+    "question_review_decision_approved_count": {
+      "const": 0
+    },
+    "question_review_decision_adopted_count": {
+      "const": 0
+    },
+    "question_review_workbook_materialized": {
+      "const": true
+    },
+    "question_review_workbook_question_count": {
+      "const": 150
+    },
+    "question_review_workbook_prefilled_decision_count": {
+      "const": 0
+    },
+    "question_registry_materialized": {
+      "const": true
+    },
+    "blockers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "question_registry_count": {
+      "const": 900
+    },
+    "question_relations_materialized": {
+      "const": true
+    },
+    "question_relations_count": {
+      "const": 4
+    },
+    "question_traceability_matrix_materialized": {
+      "const": true
+    },
+    "question_traceability_row_count": {
+      "const": 900
+    },
+    "question_acceptance_matrix_materialized": {
+      "const": true
+    },
+    "question_acceptance_test_count": {
+      "const": 900
+    },
+    "question_result_schema_materialized": {
+      "const": true
+    },
+    "owner_acceptance_recorded": {
+      "const": true
+    },
+    "owner_acceptance_change_request": {
+      "const": "CR-V3.0.0-PRECODE-001"
+    },
+    "framework_implementation_may_start": {
+      "const": true
+    },
+    "independent_validation_complete": {
+      "const": false
+    }
   },
   "additionalProperties": true
 }
