@@ -4,7 +4,7 @@
   "package_version": "0.1.0",
   "change_request": "CR-V3.0.0-PRECODE-001",
   "implementation_wave": "W0",
-  "implementation_status": "FOUNDATION_REVIEW_DECISION_GATE",
+  "implementation_status": "FOUNDATION_REVIEW_WORKBOOK",
   "r1_code_ready": false,
   "r2_test_ready": false,
   "r3_operationally_live_ready": false,
@@ -21,6 +21,9 @@
   "question_review_decision_count": 0,
   "question_review_decision_approved_count": 0,
   "question_review_decision_adopted_count": 0,
+  "question_review_workbook_materialized": true,
+  "question_review_workbook_question_count": 150,
+  "question_review_workbook_prefilled_decision_count": 0,
   "question_registry_materialized": false,
   "external_values_status": "UNBOUND_REQUIRED",
   "blockers": [

@@ -21,6 +21,9 @@
     "question_review_decision_count",
     "question_review_decision_approved_count",
     "question_review_decision_adopted_count",
+    "question_review_workbook_materialized",
+    "question_review_workbook_question_count",
+    "question_review_workbook_prefilled_decision_count",
     "question_registry_materialized"
   ],
   "properties": {
@@ -44,6 +47,9 @@
     "question_review_decision_count": {"const": 0},
     "question_review_decision_approved_count": {"const": 0},
     "question_review_decision_adopted_count": {"const": 0},
+    "question_review_workbook_materialized": {"const": true},
+    "question_review_workbook_question_count": {"const": 150},
+    "question_review_workbook_prefilled_decision_count": {"const": 0},
     "question_registry_materialized": {"const": false},
     "blockers": {"type": "array", "minItems": 1, "items": {"type": "string"}}
   },

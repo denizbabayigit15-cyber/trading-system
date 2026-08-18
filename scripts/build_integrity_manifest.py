@@ -21,6 +21,7 @@ def main() -> None:
         *sorted((ROOT / "docs/baseline").glob("*.md")),
         *sorted(path for path in (ROOT / "contracts").rglob("*.json") if path != TARGET),
         *sorted((ROOT / "schemas").glob("*.json")),
+        *sorted((ROOT / "research/question_review/templates").glob("*.xlsx")),
     ]
     files = [
         {

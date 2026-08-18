@@ -65,8 +65,8 @@
     },
     {
       "path": "contracts/manifest.json",
-      "size_bytes": 1604,
-      "sha256": "cba5d5889a021e62edfd0d5f4f99061f58fcbe4c5387cffd4b82e7cffd792837"
+      "size_bytes": 1756,
+      "sha256": "62674539490c0082459c761d35378b95973f6c5f99e63d24b53ef70dce9e0b04"
     },
     {
       "path": "contracts/policies/fail_closed.json",
@@ -87,6 +87,11 @@
       "path": "contracts/questions/question_review_decision_ledger.json",
       "size_bytes": 562,
       "sha256": "d06ddd254bbfc30c3bd51d2740372eb64c51d1fef170f330f923870a7a068e69"
+    },
+    {
+      "path": "contracts/questions/question_review_workbook_manifest.json",
+      "size_bytes": 872,
+      "sha256": "f46c6011b373f6390d1d70125aaa439bcdbef5f026cdee02878829a59a2bb7f1"
     },
     {
       "path": "contracts/reason_codes.json",
@@ -110,8 +115,8 @@
     },
     {
       "path": "schemas/manifest.schema.json",
-      "size_bytes": 2152,
-      "sha256": "7ce773ce9e0c386ae17f235dda82e385b2102f5857b64db9fad6e85b77c46641"
+      "size_bytes": 2497,
+      "sha256": "935028fe800a299c9a9ebe24a7000c688edcda14e06948fa5a50171a100532aa"
     },
     {
       "path": "schemas/question_catalog_candidate.schema.json",
@@ -127,6 +132,16 @@
       "path": "schemas/question_review_queue.schema.json",
       "size_bytes": 4149,
       "sha256": "958898cf1cd61dd10a3055467c8cd6565c6cc7e23550f08c5081d71ef8e22e05"
+    },
+    {
+      "path": "schemas/question_review_workbook_manifest.schema.json",
+      "size_bytes": 1817,
+      "sha256": "530789c2382364c270e878447e495cc8dd06454fdfabf8dda0bb59104720aaca"
+    },
+    {
+      "path": "research/question_review/templates/W0_FIRST_WAVE_QUESTION_REVIEW_WORKBOOK_V0_1_0.xlsx",
+      "size_bytes": 42819,
+      "sha256": "9c5569580a2e5a07de9ff73071fb7ee0de275420515baa86fda3d9feb56a1b3c"
     }
   ]
 }

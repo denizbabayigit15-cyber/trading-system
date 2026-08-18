@@ -22,6 +22,11 @@ hashed scope, different owner and approver identities, independent approval,
 and ordered UTC timestamps. Approval still does not mean adoption, execution,
 runtime PASS, or live authority.
 
+The Excel template under `research/question_review/templates/` mirrors all 150
+source questions for human data entry. Its editable states are limited to
+`DRAFT` and `READY_FOR_REVIEW`; it cannot record approval or adoption. Copy the
+template before entering real review data.
+
 This package therefore records:
 
 - expected questions: 900;
@@ -44,4 +49,5 @@ uv run python scripts/generate_question_catalog.py
 uv run python scripts/generate_question_catalog.py --check
 uv run python scripts/generate_question_review_queue.py --check
 uv run python scripts/validate_question_review_decisions.py
+uv run python scripts/validate_question_review_workbook.py
 ```

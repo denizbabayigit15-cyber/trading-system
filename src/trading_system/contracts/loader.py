@@ -10,6 +10,7 @@ from trading_system.contracts.models import (
     QuestionCatalogCandidate,
     QuestionReviewDecisionLedger,
     QuestionReviewQueue,
+    QuestionReviewWorkbookManifest,
 )
 
 
@@ -52,4 +53,11 @@ def load_question_review_queue() -> QuestionReviewQueue:
 def load_question_review_decision_ledger() -> QuestionReviewDecisionLedger:
     return QuestionReviewDecisionLedger.model_validate(
         load_json("contracts/questions/question_review_decision_ledger.json")
+    )
+
+
+@lru_cache(maxsize=1)
+def load_question_review_workbook_manifest() -> QuestionReviewWorkbookManifest:
+    return QuestionReviewWorkbookManifest.model_validate(
+        load_json("contracts/questions/question_review_workbook_manifest.json")
     )
