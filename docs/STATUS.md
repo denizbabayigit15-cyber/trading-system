@@ -14,6 +14,7 @@ It does not claim that the V3.0.0 design package has reached R1.
 | 112-engine catalog | MATERIALIZED, NOT IMPLEMENTED | Registry validation only |
 | 900-question candidate catalog | MATERIALIZED, NOT EXECUTED | Deterministic extraction; 900 UNKNOWN/NOT_EXECUTED records |
 | Authoritative question bindings | BLOCKED | Owner/policy/test/fail-action source JSON was not present |
+| GitHub CI quality gates | CONFIGURED, HOSTED RUN REQUIRED | Immutable action pins and read-only permissions |
 | Strategies | DISABLED RESEARCH CANDIDATES | No executable strategy code |
 | R1 CODE_READY | FALSE | Required engine contracts and evidence are incomplete |
 | R2 TEST_READY | FALSE | Full matrix not implemented or executed |
